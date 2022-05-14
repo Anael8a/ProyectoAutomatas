@@ -4,6 +4,7 @@
 
 
 import compilerTools.Token;
+import java.io.Reader.*;
 
 
 // See https://github.com/jflex-de/jflex/issues/222
@@ -278,7 +279,7 @@ class Lexer {
 
   /* user code: */
     private Token token(String lexeme, String lexicalComp, int line, int column){
-        return new Token(lexeme, lexicalComp, line+1, column+1);
+        return new Token(lexeme, lexicalComp, line+1, column+1);}
 
 
   /**
@@ -289,7 +290,9 @@ class Lexer {
   Lexer(java.io.Reader in) {
     this.zzReader = in;
   }
-
+  
+        
+   
   /**
    * Translates raw input code points to DFA table row
    */
