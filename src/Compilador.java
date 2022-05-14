@@ -7,8 +7,16 @@ import compilerTools.Grammar;
 import compilerTools.Production;
 import compilerTools.TextColor;
 import compilerTools.Token;
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -62,11 +70,11 @@ public class Compilador extends javax.swing.JFrame {
         btnCompilar = new javax.swing.JButton();
         btnEjecutar = new javax.swing.JButton();
         btnGuardarC = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaEscritorio = new javax.swing.JTextArea();
         txaErrores = new java.awt.TextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblLexemas = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtpEscritorio = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -130,13 +138,6 @@ public class Compilador extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(6, 5, 720, 70);
-
-        txaEscritorio.setColumns(20);
-        txaEscritorio.setRows(5);
-        jScrollPane1.setViewportView(txaEscritorio);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 100, 720, 260);
         getContentPane().add(txaErrores);
         txaErrores.setBounds(10, 370, 720, 110);
 
@@ -156,6 +157,11 @@ public class Compilador extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(740, 100, 310, 380);
+
+        jScrollPane2.setViewportView(jtpEscritorio);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(10, 110, 710, 250);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,7 +207,7 @@ public class Compilador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEjecutarActionPerformed
 
     private void btnGuardarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCActionPerformed
-        if(Directorio.SaveAs()){
+        if (Directorio.SaveAs()) {
             clearFields();
         }
     }//GEN-LAST:event_btnGuardarCActionPerformed
@@ -213,19 +219,19 @@ public class Compilador extends javax.swing.JFrame {
         title = "Covid";
         setLocationRelativeTo(null);
         setTitle(title);
-        Directorio = new Directory(this, txaEscritorio, title, ".cov");
+        Directorio = new Directory(this, jtpEscritorio, title, ".cov");
         addWindowListener(new WindowAdapter() {
             public void windwClosing(WindowEvent e) {
                 Directorio.Exit();
                 System.exit(0);
             }
         });
-        Functions.setLineNumberOnJTextComponent(txaEscritorio);
+        Functions.setLineNumberOnJTextComponent(jtpEscritorio);
         timerKeyReleased = new Timer(300, ((e) -> {
             timerKeyReleased.stop();
             colorAnalisis();
         }));
-        Functions.insertAsteriskInName(this, txaEscritorio, () -> {
+        Functions.insertAsteriskInName(this, jtpEscritorio, () -> {
             timerKeyReleased.restart();
         });
         tokens = new ArrayList<>();
@@ -233,24 +239,46 @@ public class Compilador extends javax.swing.JFrame {
         textsColor = new ArrayList<>();
         identProd = new ArrayList<>();
         identificadores = new HashMap<>();
-        Functions.setAutocompleterJTextComponent(new String[]{"hola", "numero", "este"}, txaEscritorio, () -> {
+        Functions.setAutocompleterJTextComponent(new String[]{"hola", "numero", "este"}, jtpEscritorio, () -> {
             timerKeyReleased.restart();
         });
 
     }
 
     private void colorAnalisis() {
+        LexerColor lexer;
+        textsColor.clear();
 
+        try {
+            File codigo = new File("color.encrypter");
+            FileOutputStream output = new FileOutputStream(codigo);
+            byte[] bytesText = jtpEscritorio.getText().getBytes();
+            output.write(bytesText);
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(new FileInputStream(codigo), "UTF-8"));
+            lexer = new LexerColor(entrada);
+            while (true) {
+                TextColor textColor = lexer.yylex();
+                if (textColor == null) {
+                    break;
+                }
+                textsColor.add(textColor);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Compilador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Compilador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Functions.colorTextPane(textsColor, jtpEscritorio, new Color(40, 40, 40));
     }
 
     private void clearFields() {
-            Functions.clearDataInTable(tblLexemas);
-            txaErrores.setText("");
-            tokens.clear();
-            errors.clear();
-            identProd.clear();
-            identificadores.clear();
-            codeHasBeenCompiled = false;
+        Functions.clearDataInTable(tblLexemas);
+        txaErrores.setText("");
+        tokens.clear();
+        errors.clear();
+        identProd.clear();
+        identificadores.clear();
+        codeHasBeenCompiled = false;
     }
 
     private void compile() {
@@ -264,6 +292,27 @@ public class Compilador extends javax.swing.JFrame {
     }
 
     private void LexicalAnalisis() {
+        Lexer lexer;
+
+        try {
+            File codigo = new File("code.encrypter");
+            FileOutputStream output = new FileOutputStream(codigo);
+            byte[] bytesText = jtpEscritorio.getText().getBytes();
+            output.write(bytesText);
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(new FileInputStream(codigo), "UTF-8"));
+            lexer = new Lexer(entrada);
+            while (true) {
+                Token token = lexer.yylex();
+                if (token == null) {
+                    break;
+                }
+                tokens.add(token);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Compilador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Compilador.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -330,13 +379,13 @@ public class Compilador extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(new FlatIntelliJLaf());
-                
+
                 new Compilador().setVisible(true);
             } catch (UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(Compilador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            }
+
+        }
         );
     }
 
@@ -348,10 +397,10 @@ public class Compilador extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarC;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane jtpEscritorio;
     private javax.swing.JTable tblLexemas;
     private java.awt.TextArea txaErrores;
-    private javax.swing.JTextArea txaEscritorio;
     // End of variables declaration//GEN-END:variables
 }
