@@ -70,7 +70,6 @@ public class Compilador extends javax.swing.JFrame {
         btnCompilar = new javax.swing.JButton();
         btnEjecutar = new javax.swing.JButton();
         btnGuardarC = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         txaErrores = new java.awt.TextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblLexemas = new javax.swing.JTable();
@@ -135,11 +134,7 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardarC);
-        btnGuardarC.setBounds(330, 20, 100, 24);
-
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(440, 50, 54, 24);
+        btnGuardarC.setBounds(330, 20, 110, 24);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(6, 5, 720, 70);
@@ -401,7 +396,6 @@ public class Compilador extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnGuardarC;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
