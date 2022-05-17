@@ -52,6 +52,10 @@ public class Compilador extends javax.swing.JFrame {
     public Compilador() {
         initComponents();
         init();
+        this.setSize(1100, 550);
+        this.setTitle("<C_O_V_I_D>");
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
