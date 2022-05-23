@@ -48,37 +48,19 @@ bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 {Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 
 /* Operadores de agrupacion */
-"(" |
-")" |
-"{" |
-"}" |
-"[" |
-"]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}
+"(" | ")" | "{" | "}" | "[" | "]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}
 
 /* Signos de apuntuacion */
-"," |
-"." |
-";" |
-":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
+"," | "." | ";" | ":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
 
 /* Operdador de asignacion */
-"+" |
-"-" |
-"*" |
-"/" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+"+" | "-" | "*" | "/" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* Operador Aritmetico */
-"<" |
-">" |
-"<=" |
-">=" |
-"==" |
-"!=" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+"<" | ">" | "<=" | ">=" | "==" | "!=" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* OPERADOR LOGICO */
-"&" |
-"|" |
-"!" { 102, 205, 170}
+"&" | "|" | "!" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* ciclos */
 repetir |
