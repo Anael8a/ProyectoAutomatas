@@ -35,4 +35,68 @@ import java.awt.Color;
 {Comentario} { return textColor(yychar, yylength(), new Color(146, 146, 146));}
 {EspacioEnBlanco} {/* Ignorar */ }
 
+/* Identificador */
+"&"{Identificador} { return textColor(yychar, yylength(), new Color(255, 200, 0)): }
+
+/* Tipo de dato */
+entero |
+decimal |
+cad |
+bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
+
+/* Numero */
+{Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
+
+/* Operadores de agrupacion */
+"(" |
+")" |
+"{" |
+"}" |
+"[" |
+"]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}
+
+/* Signos de apuntuacion */
+"," |
+"." |
+";" |
+":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
+
+/* Operdador de asignacion */
+"+" |
+"-" |
+"*" |
+"/" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+
+/* Operador Aritmetico */
+"<" |
+">" |
+"<=" |
+">=" |
+"==" |
+"!=" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+
+/* OPERADOR LOGICO */
+"&" |
+"|" |
+"!" { 102, 205, 170}
+
+/* ciclos */
+repetir |
+repetirMientras { /* Ignorar */}
+
+/* detener */ 
+interrumpir { /* Ignorar */ }
+
+/* Estructura Si */
+si |
+sino { /* Ignorar */ }
+
+/* Final */
+final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
+
+//NUMERO ERRONEO
+0{Numero} { /* Ignorar */ }
+//IDENTIFICADOR ERRONEO
+{Identificador} { /* Ignorar */ }
+
 . { /* Ignorar */ }
