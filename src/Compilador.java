@@ -367,6 +367,7 @@ public class Compilador extends javax.swing.JFrame {
          /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
          gramatica.group("VALOR", "IDENTIFICADOR", true);
          gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
+         /**/
          
          /*agrupacion de funciones*/
          gramatica.group("FUNCION", "(EVALUAR | MUTAR | FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
