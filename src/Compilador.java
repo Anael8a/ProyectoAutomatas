@@ -53,7 +53,7 @@ public class Compilador extends javax.swing.JFrame {
         initComponents();
         init();
         this.setSize(1100, 550);
-        this.setTitle("<C_O_V_I_D>");
+        this.setTitle("<KOVVID>");
         this.setLocationRelativeTo(null);
 
     }
@@ -79,6 +79,8 @@ public class Compilador extends javax.swing.JFrame {
         tblLexemas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtpEscritorio = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -167,6 +169,14 @@ public class Compilador extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(10, 110, 710, 250);
 
+        jButton1.setText("Estatica");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(950, 10, 57, 24);
+
+        jButton2.setText("Dinamica");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(950, 40, 65, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,10 +230,10 @@ public class Compilador extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private void init() {
-        title = "Covid";
+        title = "KOVVID";
         setLocationRelativeTo(null);
         setTitle(title);
-        Directorio = new Directory(this, jtpEscritorio, title, ".cov");
+        Directorio = new Directory(this, jtpEscritorio, title, ".kov");
         addWindowListener(new WindowAdapter() {
             public void windwClosing(WindowEvent e) {
                 Directorio.Exit();
@@ -439,6 +449,8 @@ public class Compilador extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnGuardarC;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
