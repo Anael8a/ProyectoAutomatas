@@ -54,7 +54,7 @@ bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 "," | "." | ";" | ":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
 
 /* Operdador de asignacion */
-"+" | "-" | "*" | "/" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+"-." { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* Operador Aritmetico */
 "<" | ">" | "<=" | ">=" | "==" | "!=" { return textColor(yychar, yylength(), new Color(102, 205, 170));}

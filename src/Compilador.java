@@ -330,7 +330,46 @@ public class Compilador extends javax.swing.JFrame {
 
     private void SintacticAnalisis() {
         Grammar gramatica = new Grammar(tokens, errors);
-
+        
+        /* ELIMINACION DE ERRORES*/
+        gramatica.delete(new String[]{"ERROR", "ERROR_1", "ERROR_2"}, 1);
+                
+         /*AGRUPACION DE VALORES*/
+         gramatica.group("VALOR", "(N_NUMERO | COLOR)", true);
+         
+         /*DECLARACION DE VARIABLES*/
+         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
+         gramatica.group("VARIABLE", "TIPO_DATO Op_Asig VALOR", true, 2, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE[#,%]");
+         
+         gramatica.finalLineColumn();
+         
+         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig", 3, "ERROR SINTACTICO {}: FALTA EL VALOR EN LA DECLARACION [#, %]");
+         
+         gramatica.initialLineColumn();
+         
+         //AQUI SE AGREGAN MAS CONBINACIONES DESAPARECIENDO UN TOKEN,
+         //AGREGAR MAS VARIABLES O LO QUE SE NECESITE PARA LAS GRAMATICAS.
+         
+         /* ELIMINACION DE TIPOS DE DATO Y OPERADORES DE ASIGNACION*/
+         gramatica.delete("TIPO_DATO", 4, "ERROR SINTACTICO {}: EL TIPO DE DATO NO ESTA EN UNA DECLARACION [#, %]");
+         gramatica.delete("Op_Asig", 4, "ERROR SINTACTICO{}: EL OPERADOR DE ASIGNACION NO ESTA EN UNA DELCARACION [#, %]");
+         
+         /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
+         gramatica.group("VALOR", "IDENTIFICADOR", true);
+         gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
+         
+         /*agrupacion de funciones*/
+         gramatica.group("FUNCION", "(EVALUAR | MUTAR | FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
+         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
+         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6,"ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
+        gramatica.finalLineColumn();
+         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7,"ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
+         
+         gramatica.initialLineColumn();
+         
+         /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
+         gramatica.delete("FUNCION",8,"ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
+         
         gramatica.show();
 
     }

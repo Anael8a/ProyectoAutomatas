@@ -43,7 +43,7 @@ cad |
 bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 
 /* Numero */
-{Numero} { return token(yytext(), "TIPO_DATO", yyline, yycolumn);}
+{Numero} { return token(yytext(), "N_NUMERO", yyline, yycolumn);}
 
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}
@@ -60,10 +60,8 @@ bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 ":" { return token(yytext(), "DOBLE_PUNTO", yyline, yycolumn);}
 
 /* Operdador de asignacion */
-"+" { return token(yytext(), "SUMA", yyline, yycolumn);}
-"-" { return token(yytext(), "RESTA", yyline, yycolumn);}
-"*" { return token(yytext(), "MULTIPLICACION", yyline, yycolumn);}
-"/" { return token(yytext(), "DIVISION", yyline, yycolumn);}
+"-." { return token(yytext(), "Op_Asig", yyline, yycolumn);}
+
 
 /* Operador Aritmetico */
 "<" { return token(yytext(), "MENOR_QUE", yyline, yycolumn);}
@@ -94,6 +92,7 @@ final { return token(yytext(), "FINAL", yyline, yycolumn);}
 
 //NUMERO ERRONEO
 0{Numero} { return token(yytext(), "ERROR_1", yyline, yycolumn);}
+
 //IDENTIFICADOR ERRONEO
 {Identificador} { return token(yytext(), "ERROR_2", yyline, yycolumn);}
 
