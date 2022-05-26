@@ -147,7 +147,7 @@ public class Compilador extends javax.swing.JFrame {
         getContentPane().add(txaErrores);
         txaErrores.setBounds(10, 370, 720, 110);
 
-        tblLexemas.setBackground(new java.awt.Color(0, 153, 153));
+        tblLexemas.setBackground(new java.awt.Color(204, 204, 204));
         tblLexemas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},

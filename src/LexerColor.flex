@@ -53,6 +53,9 @@ bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 /* Signos de apuntuacion */
 "," | "." | ";" | ":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
 
+/*OPERADORES DE MATEMATICAS*/
+"+" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
+
 /* Operdador de asignacion */
 "-." { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 

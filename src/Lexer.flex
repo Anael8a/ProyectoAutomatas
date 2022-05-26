@@ -71,6 +71,12 @@ bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 "==" { return token(yytext(), "IGUAL_QUE", yyline, yycolumn);}
 "!=" { return token(yytext(), "DIFERENTE_DE", yyline, yycolumn);}
 
+/*OPERADORES DE MATEMATICAS */
+"+" { return token(yytext(), "SUMA", yyline, yycolumn);}
+"-" { return token(yytext(), "RESTA", yyline, yycolumn);}
+"/" { return token(yytext(), "DIVISION", yyline, yycolumn);}
+"*" { return token(yytext(), "MULTIPLICACION", yyline, yycolumn);}
+
 /* OPERADOR LOGICO */
 "&" { return token(yytext(), "VERDADERO_SI_AMBOS", yyline, yycolumn);}
 "|" { return token(yytext(), "VERDADERO_SI_UNO_O_AMBOS", yyline, yycolumn);}
