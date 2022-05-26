@@ -37,8 +37,8 @@ import compilerTools.Token;
 "&"{Identificador} { return token(yytext(), "IDENTIFICADOR", yyline, yycolumn); }
 
 /* Tipo de dato */
-entero |
-decimal |
+ent |
+deci |
 cad |
 bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 

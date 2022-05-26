@@ -39,8 +39,8 @@ import java.awt.Color;
 "&"{Identificador} { return textColor(yychar, yylength(), new Color(255, 200, 0)): }
 
 /* Tipo de dato */
-entero |
-decimal |
+ent |
+deci |
 cad |
 bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 
@@ -55,6 +55,9 @@ bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 
 /*OPERADORES DE MATEMATICAS*/
 "+" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
+"-" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
+"/" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
+"*" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
 
 /* Operdador de asignacion */
 "-." { return textColor(yychar, yylength(), new Color(102, 205, 170));}
