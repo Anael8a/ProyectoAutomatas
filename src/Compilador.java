@@ -191,6 +191,9 @@ public class Compilador extends javax.swing.JFrame {
             clearFields();
         }
     }//GEN-LAST:event_btnAbrirActionPerformed
+//public void (){
+
+//}
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (Directorio.Save()) {
