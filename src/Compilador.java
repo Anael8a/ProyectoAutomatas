@@ -74,13 +74,13 @@ public class Compilador extends javax.swing.JFrame {
         btnCompilar = new javax.swing.JButton();
         btnEjecutar = new javax.swing.JButton();
         btnGuardarC = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         txaErrores = new java.awt.TextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblLexemas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtpEscritorio = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -88,6 +88,7 @@ public class Compilador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(null);
 
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar-archivo.png"))); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +96,9 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnNuevo);
-        btnNuevo.setBounds(19, 19, 90, 25);
+        btnNuevo.setBounds(10, 20, 110, 41);
 
+        btnAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         btnAbrir.setText("Abrir");
         btnAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +106,9 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAbrir);
-        btnAbrir.setBounds(120, 20, 90, 25);
+        btnAbrir.setBounds(120, 20, 100, 41);
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disquete.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,8 +116,9 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardar);
-        btnGuardar.setBounds(220, 20, 100, 25);
+        btnGuardar.setBounds(220, 20, 115, 41);
 
+        btnCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compilador.png"))); // NOI18N
         btnCompilar.setText("Compilar");
         btnCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,8 +126,9 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCompilar);
-        btnCompilar.setBounds(490, 20, 90, 25);
+        btnCompilar.setBounds(470, 20, 120, 41);
 
+        btnEjecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/corriendo.png"))); // NOI18N
         btnEjecutar.setText("Ejecutar");
         btnEjecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,8 +136,9 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnEjecutar);
-        btnEjecutar.setBounds(600, 20, 100, 25);
+        btnEjecutar.setBounds(590, 20, 120, 40);
 
+        btnGuardarC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar-como.png"))); // NOI18N
         btnGuardarC.setText("Guardar Como");
         btnGuardarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,18 +146,10 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardarC);
-        btnGuardarC.setBounds(330, 20, 110, 25);
-
-        jButton1.setText("Estatica");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(540, 40, 57, 25);
-
-        jButton2.setText("Dinamica");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(610, 50, 65, 25);
+        btnGuardarC.setBounds(340, 20, 130, 41);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(6, 5, 720, 70);
+        jPanel1.setBounds(6, 5, 740, 70);
         getContentPane().add(txaErrores);
         txaErrores.setBounds(10, 370, 720, 110);
 
@@ -176,6 +174,14 @@ public class Compilador extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(10, 110, 710, 250);
+
+        jButton1.setText("Estatica");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(800, 30, 57, 25);
+
+        jButton2.setText("Dinamica");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(870, 30, 65, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
