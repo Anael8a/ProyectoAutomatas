@@ -378,9 +378,13 @@ public class Compilador extends javax.swing.JFrame {
          
          gramatica.initialLineColumn();
          
+         /*FUNCIONES DE EVALUAR*/
+         /////////////gramatica.group("FUNCION_EVALUAR", "FUNCION_COMP(FASES)", true);
+         
          /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
          gramatica.delete("FUNCION",8,"ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
           
+         
          
         gramatica.show();
 

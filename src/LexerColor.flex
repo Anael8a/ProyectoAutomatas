@@ -86,6 +86,18 @@ final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 //FUNCION PARA MUTAR
 "mutar" | "evaluar" | "fijar_Origen" | "expandir" | "generar_graf" { return textColor(yychar, yylength(), new Color(106, 90, 250));}
 
+//PALABRAS RESERVADAS PARA EVALUAR
+fase1 |
+fase2 |
+fase3 |
+fase4 |
+fase5 |
+fase6 { /* Ignorar */ }
+
+//TEMPERATURA
+temperatura { /* Ignorar */ }
+
+
 //NUMERO ERRONEO
 0{Numero} { /* Ignorar */ }
 //IDENTIFICADOR ERRONEO

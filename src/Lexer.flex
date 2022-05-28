@@ -103,6 +103,17 @@ mutar { return token(yytext(), "MUTAR", yyline, yycolumn);}
 //FUNCION PARA EVALUAR
 evaluar { return token(yytext(), "EVALUAR", yyline, yycolumn);}
 
+//PALABRAS RESERVADAS PARA EVALUAR
+fase1 |
+fase2 |
+fase3 |
+fase4 |
+fase5 |
+fase6 { return token(yytext(), "FASES", yyline, yycolumn);}
+
+//TEMPERATURA
+temperatura { return token(yytext(), "TEMPERATURA", yyline, yycolumn);}
+
 //FUNCION PARA FIJAR ORIGEN
 fijar_Origen { return token(yytext(), "FIJAR_ORIGEN", yyline, yycolumn);}
 
