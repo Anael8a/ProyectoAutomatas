@@ -1,3 +1,5 @@
 /*Estructura*/
-decimal &carlos -. 2
-decimal &carlos -. 4
+deci &carlos -. 2
+deci &carlos -. 4
+mutar(2)
+evaluar()

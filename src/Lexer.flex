@@ -96,6 +96,22 @@ sino { return token(yytext(), "ESTRUCTURA_SI", yyline, yycolumn);}
 /* Final */
 final { return token(yytext(), "FINAL", yyline, yycolumn);}
 
+/*FUNCIONES PARA EL SISTEMA*/
+//FUNCION PARA MUTAR
+mutar { return token(yytext(), "MUTAR", yyline, yycolumn);}
+
+//FUNCION PARA EVALUAR
+evaluar { return token(yytext(), "EVALUAR", yyline, yycolumn);}
+
+//FUNCION PARA FIJAR ORIGEN
+fijar_Origen { return token(yytext(), "FIJAR_ORIGEN", yyline, yycolumn);}
+
+//FUNCION PARA EXPANDIR
+expandir { return token(yytext(), "EXPANDIR", yyline, yycolumn);}
+
+//FUNCION PARA GENERAR GRAFICA
+generar_graf { return token(yytext(), "GENERAR_GRAF", yyline, yycolumn);}
+
 //NUMERO ERRONEO
 0{Numero} { return token(yytext(), "ERROR_1", yyline, yycolumn);}
 

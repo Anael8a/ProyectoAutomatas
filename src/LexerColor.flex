@@ -82,6 +82,10 @@ sino { /* Ignorar */ }
 /* Final */
 final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 
+/*FUNCIONES PARA EL SISTEMA*/
+//FUNCION PARA MUTAR
+"mutar" | "evaluar" | "fijar_Origen" | "expandir" | "generar_graf" { return textColor(yychar, yylength(), new Color(106, 90, 250));}
+
 //NUMERO ERRONEO
 0{Numero} { /* Ignorar */ }
 //IDENTIFICADOR ERRONEO

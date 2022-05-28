@@ -380,6 +380,7 @@ public class Compilador extends javax.swing.JFrame {
          
          /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
          gramatica.delete("FUNCION",8,"ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
+          
          
         gramatica.show();
 
