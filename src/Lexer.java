@@ -411,8 +411,8 @@ class Lexer {
 
   /* user code: */
     private Token token(String lexeme, String lexicalComp, int line, int column){
-        return new Token(lexeme, lexicalComp, line+1, column+1);
-    }
+        return new Token(lexeme, lexicalComp, line+1, column+1);}
+
 
   /**
    * Creates a new scanner
@@ -1007,7 +1007,7 @@ class Lexer {
             // fall through
           case 82: break;
           case 41:
-            { return token(yytext(), "FIJAR_ORIGEN", yyline, yycolumn);
+            { return token(yytext(), "FUNCION FIJAR_ORIGEN", yyline, yycolumn);
             }
             // fall through
           case 83: break;
