@@ -16,6 +16,7 @@ public class Tablass extends JDialog {
     /**
      * Creates new form Tablass
      */
+//
      public Tablass() {
         initComponents();
         Iniciar(null);
