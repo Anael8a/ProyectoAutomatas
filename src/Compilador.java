@@ -79,8 +79,7 @@ public class Compilador extends javax.swing.JFrame {
         tblLexemas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtpEscritorio = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSimbolos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -175,13 +174,16 @@ public class Compilador extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(10, 110, 710, 250);
 
-        jButton1.setText("Estatica");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(800, 30, 57, 25);
-
-        jButton2.setText("Dinamica");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(870, 30, 65, 25);
+        btnSimbolos.setBackground(new java.awt.Color(255, 153, 0));
+        btnSimbolos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contenido-de-la-tabla.png"))); // NOI18N
+        btnSimbolos.setText("Tabla de simbolos");
+        btnSimbolos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimbolosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSimbolos);
+        btnSimbolos.setBounds(770, 10, 180, 60);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,6 +236,10 @@ public class Compilador extends javax.swing.JFrame {
             clearFields();
         }
     }//GEN-LAST:event_btnGuardarCActionPerformed
+
+    private void btnSimbolosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimbolosActionPerformed
+
+    }//GEN-LAST:event_btnSimbolosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -464,8 +470,7 @@ public class Compilador extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnGuardarC;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSimbolos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
