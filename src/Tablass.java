@@ -266,7 +266,6 @@ public class Tablass extends JDialog {
         jTable9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Inicio"},
                 {"Fin"},
                 {"Dec"},
                 {"Cad"},
@@ -314,9 +313,9 @@ public class Tablass extends JDialog {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(41, 41, 41))
         );
 
         jTabbedPane4.addTab("Palabras reservadas", jPanel7);

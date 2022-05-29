@@ -92,7 +92,7 @@ fase2 |
 fase3 |
 fase4 |
 fase5 |
-fase6 { /* Ignorar */ }
+fase6 { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
 
 //TEMPERATURA
 temperatura { /* Ignorar */ }
