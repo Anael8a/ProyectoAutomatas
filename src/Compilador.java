@@ -464,7 +464,7 @@ public class Compilador extends javax.swing.JFrame {
         }
         );
     }
- Tablas T = new Tablas();
+ Tablass T = new Tablass();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnCompilar;
