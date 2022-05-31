@@ -30,6 +30,10 @@ import compilerTools.Token;
     
     /* Numero */
     Numero = 0 | [1-9][0-9]*
+
+    /* Numero_deci */
+    Numero_deci = 0 "." 0 | [1-9][0-9]* "." [0-9]*
+
 %%
 {Comentario}|{EspacioEnBlanco} { /* Ignorar */ }
 
@@ -44,6 +48,9 @@ bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 
 /* Numero */
 {Numero} { return token(yytext(), "N_NUMERO", yyline, yycolumn);}
+
+/* Numero_deci */
+{Numero_deci} { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
 
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}

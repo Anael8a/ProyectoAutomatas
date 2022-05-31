@@ -31,6 +31,10 @@ import java.awt.Color;
     
     /* Numero */
     Numero = 0 | [1-9][0-9]*
+
+    /* Numero_deci */
+    Numero_deci = 0 "." 0 | [1-9][0-9]* "." [0-9]*
+
 %%
 {Comentario} { return textColor(yychar, yylength(), new Color(146, 146, 146));}
 {EspacioEnBlanco} {/* Ignorar */ }
@@ -46,6 +50,10 @@ bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 
 /* Numero */
 {Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
+
+/* Numero_deci */
+{Numero_deci} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
+
 
 /* Operadores de agrupacion */
 "(" | ")" | "{" | "}" | "[" | "]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}
