@@ -422,7 +422,7 @@ class Lexer {
 
   /* user code: */
     private Token token(String lexeme, String lexicalComp, int line, int column){
-        return new Token(lexeme, lexicalComp, line+1, column+1);
+        return new Token(lexeme, lexicalComp, line+1, column+1);}
 
 
   /**
