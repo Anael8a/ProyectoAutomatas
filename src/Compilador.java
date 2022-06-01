@@ -414,7 +414,11 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.delete("OP_LOGICO", 10, "ERROR SINTACTICO {}: EL OPERADOR LOGICO NO ESTA CONTENIDO EN UNA EXPRESION");
         
         /*AGRUPACION DE EXP. LOGICAS COMO VALOR Y PARAMETROS*/
+          gramatica.group("VALOR","EXP_LOGICA");
+        gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
         
+        /*AGRUPACION DE ESTRUCTURAS DE CONTROL*/
+        ///gramatica.group();
         
         gramatica.show();
 
