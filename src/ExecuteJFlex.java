@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 import jflex.exceptions.SilentExit;
 
 
-
 /**
  *
  * @author Carlos

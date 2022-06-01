@@ -1,14 +1,1 @@
-deci &hola -. 4.4{
-fijar_Origen
-<
->
-+
-*
--
-/
-<=
-&
-|
-}
-expandir()
-fase2
+(mutar()& evaluar()) | (mutar())

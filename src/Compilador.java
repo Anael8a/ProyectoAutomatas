@@ -239,8 +239,8 @@ public class Compilador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarCActionPerformed
 
     private void btnSimbolosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimbolosActionPerformed
-    T.setVisible(true);
-        
+        T.setVisible(true);
+
     }//GEN-LAST:event_btnSimbolosActionPerformed
 
     /**
@@ -357,55 +357,65 @@ public class Compilador extends javax.swing.JFrame {
 
     private void SintacticAnalisis() {
         Grammar gramatica = new Grammar(tokens, errors);
-        
+
         /* ELIMINACION DE ERRORES*/
         gramatica.delete(new String[]{"ERROR", "ERROR_1", "ERROR_2"}, 1);
-                
-         /*AGRUPACION DE VALORES*/
-         gramatica.group("VALOR", "(N_NUMERO | N_DECIMAL)", true);
-         
-         /*DECLARACION DE VARIABLES*/
-         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
-         gramatica.group("VARIABLE", "TIPO_DATO Op_Asig VALOR", true, 2, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE[#,%]");
-         gramatica.group("VARIABLE_TEMP", "TIPO_DATO IDENTIFICADOR Op_Asig TEMPERATURA");
-         gramatica.group("VARIABLE_TEMP", "TIPO_DATO Op_Asig TEMPERATURA", true, 9, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE TEMPERATURA[#,%]");
 
-         
-         gramatica.finalLineColumn();
-         
-         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig", 3, "ERROR SINTACTICO {}: FALTA EL VALOR EN LA DECLARACION [#, %]");
-         
-         gramatica.initialLineColumn();
-         
-         //AQUI SE AGREGAN MAS CONBINACIONES DESAPARECIENDO UN TOKEN,
-         //AGREGAR MAS VARIABLES O LO QUE SE NECESITE PARA LAS GRAMATICAS.
-         
-         /* ELIMINACION DE TIPOS DE DATO Y OPERADORES DE ASIGNACION*/
-         gramatica.delete("TIPO_DATO", 4, "ERROR SINTACTICO {}: EL TIPO DE DATO NO ESTA EN UNA DECLARACION [#, %]");
-         gramatica.delete("Op_Asig", 4, "ERROR SINTACTICO{}: EL OPERADOR DE ASIGNACION NO ESTA EN UNA DELCARACION [#, %]");
-         
-         /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
-         gramatica.group("VALOR", "IDENTIFICADOR", true);
-         gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
-         /**/
-         
-         /*agrupacion de funciones*/
-         gramatica.group("FUNCION", "(EVALUAR | MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
-         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
-         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6,"ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
-         gramatica.finalLineColumn();
-         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7,"ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
-         
-         gramatica.initialLineColumn();
-         
-         /*FUNCIONES DE EVALUAR*/
-         /////////////gramatica.group("FUNCION_EVALUAR", "FUNCION_COMP(FASES)", true);
-         
-         /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
-         gramatica.delete("FUNCION",8,"ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
-          
-         
-         
+        /*AGRUPACION DE VALORES*/
+        gramatica.group("VALOR", "(N_NUMERO | N_DECIMAL)", true);
+
+        /*DECLARACION DE VARIABLES*/
+        gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
+        gramatica.group("VARIABLE", "TIPO_DATO Op_Asig VALOR", true, 2, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE[#,%]");
+        gramatica.group("VARIABLE_TEMP", "TIPO_DATO IDENTIFICADOR Op_Asig TEMPERATURA");
+        gramatica.group("VARIABLE_TEMP", "TIPO_DATO Op_Asig TEMPERATURA", true, 9, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE TEMPERATURA[#,%]");
+
+        gramatica.finalLineColumn();
+
+        gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig", 3, "ERROR SINTACTICO {}: FALTA EL VALOR EN LA DECLARACION [#, %]");
+
+        gramatica.initialLineColumn();
+
+        //AQUI SE AGREGAN MAS CONBINACIONES DESAPARECIENDO UN TOKEN,
+        //AGREGAR MAS VARIABLES O LO QUE SE NECESITE PARA LAS GRAMATICAS.
+        /* ELIMINACION DE TIPOS DE DATO Y OPERADORES DE ASIGNACION*/
+        gramatica.delete("TIPO_DATO", 4, "ERROR SINTACTICO {}: EL TIPO DE DATO NO ESTA EN UNA DECLARACION [#, %]");
+        gramatica.delete("Op_Asig", 4, "ERROR SINTACTICO{}: EL OPERADOR DE ASIGNACION NO ESTA EN UNA DELCARACION [#, %]");
+
+        /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
+        gramatica.group("VALOR", "IDENTIFICADOR", true);
+        gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
+        /**/
+
+ /*agrupacion de funciones*/
+        gramatica.group("FUNCION", "(EVALUAR | MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
+        gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
+        gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
+        gramatica.finalLineColumn();
+        gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
+
+        gramatica.initialLineColumn();
+
+        /*FUNCIONES DE EVALUAR*/
+        /////////////gramatica.group("FUNCION_EVALUAR", "FUNCION_COMP(FASES)", true);
+        /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
+        gramatica.delete("FUNCION", 8, "ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
+
+        gramatica.loopForFunExecUntilChangeNotDetected(() ->{
+            gramatica.group("EXP_LOGICA", "(FUNCION_COMP | EXP_LOGICA) (OP_LOGICO (FUNCION_COMP | EXP_LOGICA))+");
+            gramatica.group("EXP_LOGICA", "PARENTESIS_A (EXP_LOGICA | FUNCION_COMP) PARENTESIS_C");
+
+        });
+        //gramatica.group("EXP_LOGICA", "(FUNCION_COMP) (OP_LOGICO FUNCION_COMP)+");
+        //gramatica.group("EXP_LOGICA", "PARENTESIS_A EXP_LOGICA PARENTESIS_C");
+        //gramatica.group("EXP_LOGICA", "(FUNCION_COMP | EXP_LOGICA) (OP_LOGICO (FUNCION_COMP| EXP_LOGICA))+");
+        
+        /* ELIMINACION DE OPERADORES LOGICOS */
+        gramatica.delete("OP_LOGICO", 10, "ERROR SINTACTICO {}: EL OPERADOR LOGICO NO ESTA CONTENIDO EN UNA EXPRESION");
+        
+        /*AGRUPACION DE EXP. LOGICAS COMO VALOR Y PARAMETROS*/
+        
+        
         gramatica.show();
 
     }
@@ -467,7 +477,7 @@ public class Compilador extends javax.swing.JFrame {
         }
         );
     }
- Tablass T = new Tablass();
+    Tablass T = new Tablass();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnCompilar;
