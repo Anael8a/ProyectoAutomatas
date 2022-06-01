@@ -34,6 +34,8 @@ import compilerTools.Token;
     /* Numero_deci */
     Numero_deci = 0 "." 0 | [1-9][0-9]* "." [0-9]*
 
+    /*Temperatura*/
+    Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
 %%
 {Comentario}|{EspacioEnBlanco} { /* Ignorar */ }
 
@@ -119,7 +121,7 @@ fase5 |
 fase6 { return token(yytext(), "FASES", yyline, yycolumn);}
 
 //TEMPERATURA
-temperatura { return token(yytext(), "TEMPERATURA", yyline, yycolumn);}
+"T"{Temperatura} { return token(yytext(), "TEMPERATURA", yyline, yycolumn);}
 
 //FUNCION PARA FIJAR ORIGEN
 fijar_Origen { return token(yytext(), "FUNCION FIJAR_ORIGEN", yyline, yycolumn);}

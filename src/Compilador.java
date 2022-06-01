@@ -362,11 +362,14 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.delete(new String[]{"ERROR", "ERROR_1", "ERROR_2"}, 1);
                 
          /*AGRUPACION DE VALORES*/
-         gramatica.group("VALOR", "(N_NUMERO | COLOR)", true);
+         gramatica.group("VALOR", "(N_NUMERO | N_DECIMAL)", true);
          
          /*DECLARACION DE VARIABLES*/
          gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
          gramatica.group("VARIABLE", "TIPO_DATO Op_Asig VALOR", true, 2, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE[#,%]");
+         gramatica.group("VARIABLE_TEMP", "TIPO_DATO IDENTIFICADOR Op_Asig TEMPERATURA");
+         gramatica.group("VARIABLE_TEMP", "TIPO_DATO Op_Asig TEMPERATURA", true, 9, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE TEMPERATURA[#,%]");
+
          
          gramatica.finalLineColumn();
          
@@ -387,7 +390,7 @@ public class Compilador extends javax.swing.JFrame {
          /**/
          
          /*agrupacion de funciones*/
-         gramatica.group("FUNCION", "(EVALUAR | MUTAR | FUNCION FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
+         gramatica.group("FUNCION", "(EVALUAR | MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
          gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
          gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6,"ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
          gramatica.finalLineColumn();

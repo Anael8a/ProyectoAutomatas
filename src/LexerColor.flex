@@ -35,6 +35,9 @@ import java.awt.Color;
     /* Numero_deci */
     Numero_deci = 0 "." 0 | [1-9][0-9]* "." [0-9]*
 
+    /*Temperatura*/
+    Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
+
 %%
 {Comentario} { return textColor(yychar, yylength(), new Color(146, 146, 146));}
 {EspacioEnBlanco} {/* Ignorar */ }
@@ -103,7 +106,7 @@ fase5 |
 fase6 { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
 
 //TEMPERATURA
-temperatura { /* Ignorar */ }
+"T"Temperatura { /* Ignorar */ }
 
 
 //NUMERO ERRONEO
