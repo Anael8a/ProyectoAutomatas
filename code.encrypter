@@ -1,1 +1,14 @@
-deci &hola -. T1.5
+deci &hola -. 4.4{
+fijar_Origen
+<
+>
++
+*
+-
+/
+<=
+&
+|
+}
+expandir()
+fase2

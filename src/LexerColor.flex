@@ -37,6 +37,13 @@ import java.awt.Color;
 
     /*Temperatura*/
     Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
+    
+    /*cad*/
+    cad= {Letra} {Letra}*
+    
+    /*Bool*/
+    Bool= "VERDADERO" | "FALSO"
+    
 
 %%
 {Comentario} { return textColor(yychar, yylength(), new Color(146, 146, 146));}
@@ -49,7 +56,7 @@ import java.awt.Color;
 ent |
 deci |
 cad |
-bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
+Bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 
 /* Numero */
 {Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
@@ -57,6 +64,11 @@ bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 /* Numero_deci */
 {Numero_deci} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 
+/*cad*/
+{cad} {yychar, yylength(), new Color(255, 0, 255));}
+    
+/*Bool*/
+{Bool} {yychar, yylength(), new Color(0, 255, 255));}
 
 /* Operadores de agrupacion */
 "(" | ")" | "{" | "}" | "[" | "]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}

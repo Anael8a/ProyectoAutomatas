@@ -36,6 +36,13 @@ import compilerTools.Token;
 
     /*Temperatura*/
     Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
+
+    /*cad*/
+    cad= {Letra} {Letra}*
+    
+    /*Bool*/
+    Bool= "VERDADERO" | "FALSO"
+
 %%
 {Comentario}|{EspacioEnBlanco} { /* Ignorar */ }
 
@@ -46,13 +53,19 @@ import compilerTools.Token;
 ent |
 deci |
 cad |
-bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
+Bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 
 /* Numero */
 {Numero} { return token(yytext(), "N_NUMERO", yyline, yycolumn);}
 
 /* Numero_deci */
 {Numero_deci} { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
+
+/*cad*/
+cad= { return token(yytext(), "", yyline, yycolumn);}
+    
+/*Bool*/
+{Bool}= { return token(yytext(), "", yyline, yycolumn);} 
 
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}
@@ -87,9 +100,9 @@ bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 "*" { return token(yytext(), "MULTIPLICACION", yyline, yycolumn);}
 
 /* OPERADOR LOGICO */
-"&" { return token(yytext(), "VERDADERO_SI_AMBOS", yyline, yycolumn);}
-"|" { return token(yytext(), "VERDADERO_SI_UNO_O_AMBOS", yyline, yycolumn);}
-"!" { return token(yytext(), "INVIERTE_VALOR_FINAL", yyline, yycolumn);}
+"&" |
+"|" |
+"!" { return token(yytext(), "OP_LOGICO", yyline, yycolumn);}
 
 /* ciclos */
 repetir |
