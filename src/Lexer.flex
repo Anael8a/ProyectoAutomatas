@@ -104,14 +104,14 @@ cad= { return token(yytext(), "", yyline, yycolumn);}
 "|" |
 "!" { return token(yytext(), "OP_LOGICO", yyline, yycolumn);}
 
-/* ciclos */
+/* ciclos WHILE */
 repetir |
 repetirMientras { return token(yytext(), "REPETIR", yyline, yycolumn);}
 
 /* detener */ 
 interrumpir { return token(yytext(), "DETENER_REPETIR", yyline, yycolumn);}
 
-/* Estructura Si */
+/* Estructura Si IF */
 si |
 sino { return token(yytext(), "ESTRUCTURA_SI", yyline, yycolumn);}
 
