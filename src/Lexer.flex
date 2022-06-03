@@ -38,7 +38,7 @@ import compilerTools.Token;
     Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
 
     /*cad*/
-    cad= {Letra} {Letra}*
+    cad= {Letra}{Letra}*
     
     /*Bool*/
     Bool= "VERDADERO" | "FALSO"
@@ -50,22 +50,19 @@ import compilerTools.Token;
 "&"{Identificador} { return token(yytext(), "IDENTIFICADOR", yyline, yycolumn); }
 
 /* Tipo de dato */
-ent |
-deci |
-cad |
-Bool { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
+Numero_deci { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 
 /* Numero */
-{Numero} { return token(yytext(), "N_NUMERO", yyline, yycolumn);}
+{Numero} { return token(yytext(), "N_ENTERO", yyline, yycolumn);}
 
 /* Numero_deci */
 {Numero_deci} { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
 
 /*cad*/
-cad= { return token(yytext(), "", yyline, yycolumn);}
+"K_"{cad}= { return token(yytext(), "CADENA", yyline, yycolumn);}
     
 /*Bool*/
-{Bool}= { return token(yytext(), "", yyline, yycolumn);} 
+{Bool}= { return token(yytext(), "TIPO_DATO", yyline, yycolumn);} 
 
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}
@@ -119,8 +116,9 @@ sino { return token(yytext(), "ESTRUCTURA_SI", yyline, yycolumn);}
 final { return token(yytext(), "FINAL", yyline, yycolumn);}
 
 /*FUNCIONES PARA EL SISTEMA*/
+
 //FUNCION PARA MUTAR
-mutar { return token(yytext(), "MUTAR", yyline, yycolumn);}
+Mutar { return token(yytext(), "FUNCION_MUTAR", yyline, yycolumn);}
 
 //FUNCION PARA EVALUAR
 evaluar { return token(yytext(), "EVALUAR", yyline, yycolumn);}

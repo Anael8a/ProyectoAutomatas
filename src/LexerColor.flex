@@ -65,7 +65,7 @@ Bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 {Numero_deci} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 
 /*cad*/
-{cad} {yychar, yylength(), new Color(255, 0, 255));}
+"K_"{cad} {yychar, yylength(), new Color(255, 0, 255));}
     
 /*Bool*/
 {Bool} {yychar, yylength(), new Color(0, 255, 255));}
@@ -106,8 +106,9 @@ sino { /* Ignorar */ }
 final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 
 /*FUNCIONES PARA EL SISTEMA*/
+
 //FUNCION PARA MUTAR
-"mutar" | "evaluar" | "fijar_Origen" | "expandir" | "generar_graf" { return textColor(yychar, yylength(), new Color(106, 90, 250));}
+Mutar { return textColor(yychar, yylength(), new Color(0, 144, 255));}
 
 //PALABRAS RESERVADAS PARA EVALUAR
 fase1 |
@@ -120,6 +121,14 @@ fase6 { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
 //TEMPERATURA
 "T"Temperatura { /* Ignorar */ }
 
+//FUNCION PARA FIJAR ORIGEN
+fijar_Origen { return textColor(yychar, yylength(), new Color(0, 144, 255));}
+
+//FUNCION PARA EXPANDIR
+expandir {return textColor(yychar, yylength(), new Color(0, 144, 255));}
+
+//FUNCION PARA GENERAR GRAFICA
+generar_graf { return textColor(yychar, yylength(), new Color(0, 144, 255));}
 
 //NUMERO ERRONEO
 0{Numero} { /* Ignorar */ }

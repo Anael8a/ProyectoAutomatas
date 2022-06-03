@@ -430,8 +430,8 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.delete(new String[]{"PARENTESIS_A", "PARENTESIS_C"}, 12, "ERROR SINTACTICO{}: El parentesis [] no esta conetenido en una agrupacion [#,%]");
 
         gramatica.finalLineColumn();
-
         /*VERIFICACION DE PUNTO Y COMA AL FINAL DE LA SENTENCIA.*/
+
         ////idenficador o variables
         gramatica.group("VARIABLE_PC", "VARIABLE PUNTOyCOMA", true);
         gramatica.group("VARIABLE_PC", "VARIABLE ", true, 13, "ERROR SINTACTICO{}: Falta el punto y coma al final de la variable[#,%]");
@@ -463,6 +463,7 @@ public class Compilador extends javax.swing.JFrame {
         });
         
         gramatica.delete(new String[]{"LLAVE_A", "LLAVE_C"}, 17, "ERROR SINTACTICO{}: La llave [] no esta contenida en una agrupacion[#,%]");
+        
 
         gramatica.show();
 
