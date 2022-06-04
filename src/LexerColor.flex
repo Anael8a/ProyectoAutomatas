@@ -105,7 +105,10 @@ final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 /*FUNCIONES PARA EL SISTEMA*/
 
 //FUNCION PARA MUTAR
-Mutar { return textColor(yychar, yylength(), new Color(0, 144, 255));}
+mutar { return textColor(yychar, yylength(), new Color(0, 144, 255));}
+
+//FUNCION PARA EVALUAR
+evaluar { return textColor(yychar, yylength(), new Color(0, 144, 255));}
 
 //PALABRAS RESERVADAS PARA EVALUAR
 fase1 |

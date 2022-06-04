@@ -118,7 +118,7 @@ final { return token(yytext(), "FINAL", yyline, yycolumn);}
 /*FUNCIONES PARA EL SISTEMA*/
 
 //FUNCION PARA MUTAR
-Mutar { return token(yytext(), "FUNCION_MUTAR", yyline, yycolumn);}
+mutar { return token(yytext(), "FUNCION_MUTAR", yyline, yycolumn);}
 
 //FUNCION PARA EVALUAR
 evaluar { return token(yytext(), "EVALUAR", yyline, yycolumn);}
