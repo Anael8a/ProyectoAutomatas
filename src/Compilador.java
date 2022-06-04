@@ -362,7 +362,7 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.delete(new String[]{"ERROR", "ERROR_1", "ERROR_2"}, 1);
 
         /*AGRUPACION DE VALORES*/
-        gramatica.group("VALOR", "(N_NUMERO | N_DECIMAL)", true);
+        gramatica.group("VALOR", "(N_ENTERO | N_DECIMAL)", true);
 
         /*DECLARACION DE VARIABLES*/
         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);

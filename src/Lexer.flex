@@ -50,7 +50,7 @@ import compilerTools.Token;
 "&"{Identificador} { return token(yytext(), "IDENTIFICADOR", yyline, yycolumn); }
 
 /* Tipo de dato */
-Numero_deci { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
+ent { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 
 /* Numero */
 {Numero} { return token(yytext(), "N_ENTERO", yyline, yycolumn);}

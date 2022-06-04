@@ -53,10 +53,7 @@ import java.awt.Color;
 "&"{Identificador} { return textColor(yychar, yylength(), new Color(255, 200, 0)): }
 
 /* Tipo de dato */
-ent |
-deci |
-cad |
-Bool { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
+ent { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 
 /* Numero */
 {Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
