@@ -405,9 +405,9 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.initialLineColumn();
 
          /*FUNCIONES DE EVALUAR*/
-        gramatica.group("FUNCION_ACTIVAR", "(ACTIVAR)", true);
-        gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A(VERDADERO| FALSE) PARENTESIS_C", true);
-        gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A ");
+       // gramatica.group("FUNCION_ACTIVAR", "(ACTIVAR)", true);
+     //   gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A(VERDADERO| FALSE) PARENTESIS_C", true);
+       // gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A ");
 
         /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
         gramatica.delete("FUNCION", 8, "ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
