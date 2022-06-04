@@ -33,10 +33,10 @@ import java.awt.Color;
     Numero = 0 | [1-9][0-9]*
 
     /* Numero_deci */
-    Numero_deci = 0 "." 0 | [1-9][0-9]* "." [0-9]*
+    Numero_deci = [1-9][0-9]* "." [0-9]* | 0 "." [0-9] [0-9]*
 
-    /*Temperatura*/
-    Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
+    /* Temperatura */
+    Temperatura =  {Numero} | {Numero_deci}
     
     /*cad*/
     cad= {Letra} {Letra}*
@@ -58,7 +58,7 @@ import java.awt.Color;
 {Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 
 /* Numero_deci */
-{Numero_deci} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
+Numero_deci { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 
 /*cad*/
 "K_"{cad} {yychar, yylength(), new Color(255, 0, 255));}
@@ -121,7 +121,7 @@ fase5 |
 fase6 { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
 
 //TEMPERATURA
-"T"Temperatura { /* Ignorar */ }
+"T"{Temperatura} { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
 
 //FUNCION PARA FIJAR ORIGEN
 fijar_Origen { return textColor(yychar, yylength(), new Color(0, 144, 255));}

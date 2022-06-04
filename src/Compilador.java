@@ -392,12 +392,15 @@ public class Compilador extends javax.swing.JFrame {
         /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
         gramatica.group("VALOR", "IDENTIFICADOR", true);
         gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
+        
         /**/
-
+//NUMERO(NUM.DE FASE,CANTIDAD DE PAISES,TEMPERATURA)
  /*agrupacion de funciones*/
-        gramatica.group("FUNCION", "(EVALUAR | FUNCION_MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
+        gramatica.group("FUNCION", "(FUNCION_MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
+        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES & VALOR)? PARENTESIS_C",true);
          //errores
+        gramatica.group("FUNCION_COMP_MUT","EVALUAR FASE & VALOR & TEMPERATURA PARENTESIS_C",true,18,"FALTA PARENTESIS QUE ABRE");
         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
         gramatica.finalLineColumn();
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");

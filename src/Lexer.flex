@@ -32,10 +32,10 @@ import compilerTools.Token;
     Numero = 0 | [1-9][0-9]*
 
     /* Numero_deci */
-    Numero_deci = 0 "." 0 | [1-9][0-9]* "." [0-9]*
+    Numero_deci = [1-9][0-9]* "." [0-9]* | 0 "." [0-9] [0-9]*
 
-    /*Temperatura*/
-    Temperatura =  "."  | [1-9][0-9]* "." [0-9]*
+    /* Temperatura */
+    Temperatura =  {Numero} | {Numero_deci}
 
     /*cad*/
     cad= {Letra}{Letra}*
@@ -54,7 +54,7 @@ import compilerTools.Token;
 {Numero} { return token(yytext(), "N_ENTERO", yyline, yycolumn);}
 
 /* Numero_deci */
-{Numero_deci} { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
+Numero_deci { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
 
 /*cad*/
 "K_"{cad}= { return token(yytext(), "CADENA", yyline, yycolumn);}
