@@ -585,7 +585,7 @@
                           <Data value="Fijar_Origen"/>
                           <Data value="Mutar"/>
                           <Data value="Expandir"/>
-                          <Data value="null"/>
+                          <Data value="activo"/>
                           <Data value="null"/>
                         </Column>
                       </Table>

@@ -304,7 +304,7 @@ public class Tablass extends JDialog {
                 {"Fijar_Origen"},
                 {"Mutar"},
                 {"Expandir"},
-                {null},
+                {"activo"},
                 {null}
             },
             new String [] {
