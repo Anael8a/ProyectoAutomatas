@@ -42,7 +42,7 @@ import java.awt.Color;
     cad= {Letra} {Letra}*
     
     /*Bool*/
-    Bool= "VERDADERO" | "FALSO"
+    //Bool= "VERDADERO" | "FALSO"
     
 
 %%
@@ -52,8 +52,7 @@ import java.awt.Color;
 /* Identificador */
 "&"{Identificador} { return textColor(yychar, yylength(), new Color(255, 200, 0)): }
 
-/* Tipo de dato */
-ent { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
+
 
 /* Numero */
 {Numero} { return textColor(yychar, yylength(), new Color(35, 120, 147));}
@@ -64,8 +63,11 @@ ent { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 /*cad*/
 "K_"{cad} {yychar, yylength(), new Color(255, 0, 255));}
     
-/*Bool*/
-{Bool} {yychar, yylength(), new Color(0, 255, 255));}
+/*TIPO DATO*/
+LOGICO |
+ENT |
+DECI |
+CADENA { yychar, yylength(), new Color(0, 0, 255));} 
 
 /* Operadores de agrupacion */
 "(" | ")" | "{" | "}" | "[" | "]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}
@@ -90,7 +92,7 @@ ent { return textColor(yychar, yylength(), new Color(0, 255, 0)); }
 
 /* ciclos */
 repetir |
-repetirMientras { /* Ignorar */}
+repetirMientras {  return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* detener */ 
 interrumpir { /* Ignorar */ }

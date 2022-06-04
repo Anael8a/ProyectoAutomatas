@@ -41,7 +41,7 @@ import compilerTools.Token;
     cad= {Letra}{Letra}*
     
     /*Bool*/
-    Bool= "VERDADERO" | "FALSO"
+    //Bool= "VERDADERO" | "FALSO"
 
 %%
 {Comentario}|{EspacioEnBlanco} { /* Ignorar */ }
@@ -49,8 +49,6 @@ import compilerTools.Token;
 /* Identificador */
 "&"{Identificador} { return token(yytext(), "IDENTIFICADOR", yyline, yycolumn); }
 
-/* Tipo de dato */
-ent { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 
 /* Numero */
 {Numero} { return token(yytext(), "N_ENTERO", yyline, yycolumn);}
@@ -61,8 +59,11 @@ ent { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 /*cad*/
 "K_"{cad}= { return token(yytext(), "CADENA", yyline, yycolumn);}
     
-/*Bool*/
-{Bool}= { return token(yytext(), "TIPO_DATO", yyline, yycolumn);} 
+/*TIPO DATO*/
+LOGICO |
+ENT |
+DECI |
+CADENA { return token(yytext(), "TIPO_DATO", yyline, yycolumn);} 
 
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}

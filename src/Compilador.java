@@ -410,6 +410,7 @@ public class Compilador extends javax.swing.JFrame {
 
         gramatica.loopForFunExecUntilChangeNotDetected(() -> {
             gramatica.group("EXP_LOGICA", "(FUNCION_COMP | EXP_LOGICA) (OP_LOGICO (FUNCION_COMP | EXP_LOGICA))+");
+            
             gramatica.group("EXP_LOGICA", "PARENTESIS_A (EXP_LOGICA | FUNCION_COMP) PARENTESIS_C");
 
         });
@@ -424,10 +425,20 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("VALOR", "EXP_LOGICA");
         gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
 
+/*
+         gramatica.group("FUNCION", "(EVALUAR | FUNCION_MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
+        gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
+        gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
+        gramatica.finalLineColumn();
+        gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
+
+        gramatica.initialLineColumn();
+*/
+
         /*AGRUPACION DE ESTRUCTURAS DE CONTROL*/
         gramatica.group("ESTRUC_CONTROL", "(REPETIR | ESTRUCTURA_SI)");
-        gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A PARENTESIS_C");
-        gramatica.group("ESTRUC_CONTROL", "(VALOR | PARAMETROS)");
+       // gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A PARENTESIS_C");
+       // gramatica.group("ESTRUC_CONTROL", "(VALOR | PARAMETROS)");
         gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A (VALOR | PARAMETROS) PARENTESIS_C");
 
         /*ELIMINACION DE ESTRUCTURAS DE CONTROL INCOMPLETAS*/
