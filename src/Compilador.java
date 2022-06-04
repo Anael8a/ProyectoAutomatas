@@ -398,12 +398,17 @@ public class Compilador extends javax.swing.JFrame {
  /*agrupacion de funciones*/
         gramatica.group("FUNCION", "(FUNCION_MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES & VALOR)? PARENTESIS_C",true);
+         //FUNCION MUTAR
+        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C",true);
          //errores
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR FASE & VALOR & TEMPERATURA PARENTESIS_C",true,18,"FALTA PARENTESIS QUE ABRE");
+        
         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
         gramatica.finalLineColumn();
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
+
+         //ERRORES FUNCION MUTAR
+         gramatica.group("FUNCION_COMP_MUT","EVALUAR (FASES & PARAMETROS)? PARENTESIS_C",true,18,"FALTA PARENTESIS QUE ABRE");
+        gramatica.group("FUNCION_COMP_MUT","PARENTESIS_A EVALUAR (FASES & PARAMETROS)? ",true,18,"FALTA PARENTESIS QUE CIERRA");
 
         gramatica.initialLineColumn();
 
@@ -463,6 +468,7 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("VARIABLE_PC", "VARIABLE PUNTOyCOMA", true);
         gramatica.group("VARIABLE_PC", "VARIABLE ", true, 13, "ERROR SINTACTICO{}: Falta el punto y coma al final de la variable[#,%]");
         gramatica.group("FUNCION_COMP_PC", "FUNCION_COMP PUNTOyCOMA");
+        gramatica.group("FUNCION_COMP_EVA_PC", "FUNCION_COMP_MUT PUNTOyCOMA");
         gramatica.group("FUNCION_COMP_PC", "FUNCION_COMP", 14, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion");
 
         gramatica.initialLineColumn();
