@@ -81,6 +81,7 @@ public class Compilador extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtpEscritorio = new javax.swing.JTextPane();
         btnSimbolos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -185,6 +186,12 @@ public class Compilador extends javax.swing.JFrame {
         });
         getContentPane().add(btnSimbolos);
         btnSimbolos.setBounds(770, 10, 180, 60);
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 13)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/virus.png"))); // NOI18N
+        jLabel1.setText("KOVVID_CODE");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(950, 20, 130, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -535,6 +542,7 @@ public class Compilador extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarC;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSimbolos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
