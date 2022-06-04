@@ -132,6 +132,9 @@ expandir {return textColor(yychar, yylength(), new Color(0, 144, 255));}
 //FUNCION PARA GENERAR GRAFICA
 generar_graf { return textColor(yychar, yylength(), new Color(0, 144, 255));}
 
+//FUNCION PARA ACTIVAR
+activar {return textColor(yychar, yylength(), new Color(225, 181, 29));}
+
 //NUMERO ERRONEO
 0{Numero} { /* Ignorar */ }
 //IDENTIFICADOR ERRONEO

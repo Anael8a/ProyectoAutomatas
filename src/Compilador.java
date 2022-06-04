@@ -404,8 +404,11 @@ public class Compilador extends javax.swing.JFrame {
 
         gramatica.initialLineColumn();
 
-        /*FUNCIONES DE EVALUAR*/
-        /////////////gramatica.group("FUNCION_EVALUAR", "FUNCION_COMP(FASES)", true);
+         /*FUNCIONES DE EVALUAR*/
+        gramatica.group("FUNCION_ACTIVAR", "(ACTIVAR)", true);
+        gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A(VERDADERO| FALSE) PARENTESIS_C", true);
+        gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A ");
+
         /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
         gramatica.delete("FUNCION", 8, "ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
 
@@ -426,6 +429,8 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("VALOR", "EXP_LOGICA");
         gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
 
+       
+        
 /*
          gramatica.group("FUNCION", "(EVALUAR | FUNCION_MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);

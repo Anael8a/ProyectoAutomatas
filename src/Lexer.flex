@@ -141,6 +141,9 @@ fijar_Origen { return token(yytext(), "FUNCION FIJAR_ORIGEN", yyline, yycolumn);
 //FUNCION PARA EXPANDIR
 expandir { return token(yytext(), "EXPANDIR", yyline, yycolumn);}
 
+//FUNCION PARA ACTIVAR
+activar {return token (yytext(), "ACTIVAR", yyline, yycolumn);}
+
 //FUNCION PARA GENERAR GRAFICA
 generar_graf { return token(yytext(), "GENERAR_GRAF", yyline, yycolumn);}
 
