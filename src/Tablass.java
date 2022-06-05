@@ -289,7 +289,6 @@ public class Tablass extends JDialog {
                 {"Mientras"},
                 {"Evaluar"},
                 {"Arreglo"},
-                {"Func"},
                 {"Generar_Graf"},
                 {"Fase1"},
                 {"Fase2"},

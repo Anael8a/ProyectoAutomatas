@@ -126,7 +126,7 @@ nulo { return token(yytext(), "NULO", yyline, yycolumn);}
 leer { return token(yytext(), "ESTRUCTURA_ENTRADA", yyline, yycolumn);}
 escribir { return token(yytext(), "ESTRUCTURA_SALIDA", yyline, yycolumn);}
 
-
+////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/
 
 //FUNCION PARA MUTAR
@@ -158,6 +158,8 @@ activar {return token (yytext(), "ACTIVAR", yyline, yycolumn);}
 //FUNCION PARA GENERAR GRAFICA
 generar_graf { return token(yytext(), "GENERAR_GRAF", yyline, yycolumn);}
 
+
+/* ERRORES   */////////////////////////////////////////////////////////////////////////
 //NUMERO ERRONEO
 0{Numero} { return token(yytext(), "ERROR_1", yyline, yycolumn);}
 
