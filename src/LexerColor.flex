@@ -50,7 +50,7 @@ import java.awt.Color;
 {EspacioEnBlanco} {/* Ignorar */ }
 
 /* Identificador */
-"&"{Identificador} { return textColor(yychar, yylength(), new Color(255, 200, 0)): }
+"&"{Identificador} { return textColor(yychar, yylength(), new Color(255, 200, 0)); }
 
 
 
@@ -61,13 +61,13 @@ import java.awt.Color;
 Numero_deci { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 
 /*cad*/
-"K_"{cad} {yychar, yylength(), new Color(255, 0, 255));}
+"K_"{cad} {return textColor(yychar, yylength(), new Color(255, 0, 255));}
     
 /*TIPO DATO*/
 LOGICO |
 ENT |
 DECI |
-CADENA { yychar, yylength(), new Color(0, 0, 255));} 
+CADENA { return textColor(yychar, yylength(), new Color(0, 0, 255));} 
 
 /* Operadores de agrupacion */
 "(" | ")" | "{" | "}" | "[" | "]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}

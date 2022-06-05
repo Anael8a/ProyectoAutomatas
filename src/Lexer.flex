@@ -8,7 +8,7 @@ import compilerTools.Token;
 %column
 %{
     private Token token(String lexeme, String lexicalComp, int line, int column){
-        return new Token(lexeme, lexicalComp, line+1, column+1);
+        return new Token(lexeme, lexicalComp, line+1, column+1);}
 %}
 /*Variables basicas de comentarios y espacios */
     TerminadorDeLinea = \r|\n|\r\n
