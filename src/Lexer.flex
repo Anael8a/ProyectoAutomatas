@@ -64,7 +64,7 @@ LOGICO |
 ENT |
 DECI |
 CADENA { return token(yytext(), "TIPO_DATO", yyline, yycolumn);} 
-
+/////////////////////////////////////////////////////////////////////////////
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}
 ")" { return token(yytext(), "PARENTESIS_C", yyline, yycolumn);}
@@ -101,7 +101,7 @@ CADENA { return token(yytext(), "TIPO_DATO", yyline, yycolumn);}
 "&" |
 "|" |
 "!" { return token(yytext(), "OP_LOGICO", yyline, yycolumn);}
-
+////////////////////////////////////////////////////////////////////////////
 /* ciclos WHILE */
 repetir |
 repetirMientras { return token(yytext(), "REPETIR", yyline, yycolumn);}
@@ -115,6 +115,17 @@ sino { return token(yytext(), "ESTRUCTURA_SI", yyline, yycolumn);}
 
 /* Final */
 final { return token(yytext(), "FINAL", yyline, yycolumn);}
+
+/*ARREGLOS*/
+arreglo { return token(yytext(), "ARREGLO", yyline, yycolumn);}
+
+/*NULOS*/
+nulo { return token(yytext(), "NULO", yyline, yycolumn);}
+
+/* LEER ESCRIBIR*/
+leer { return token(yytext(), "ESTRUCTURA_ENTRADA", yyline, yycolumn);}
+escribir { return token(yytext(), "ESTRUCTURA_SALIDA", yyline, yycolumn);}
+
 
 /*FUNCIONES PARA EL SISTEMA*/
 
