@@ -68,42 +68,63 @@ LOGICO |
 ENT |
 DECI |
 CADENA { return textColor(yychar, yylength(), new Color(0, 0, 255));} 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////
 /* Operadores de agrupacion */
-"(" | ")" | "{" | "}" | "[" | "]" { return textColor(yychar, yylength(), new Color(100, 149, 237));}
+"(" |
+")" |
+"{" |
+"}" |
+"[" |
+"]" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
 
 /* Signos de apuntuacion */
-"," | "." | ";" | ":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
+"," |
+"." |
+";" |
+":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
 
 /*OPERADORES DE MATEMATICAS*/
-"+" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
-"-" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
-"/" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
-"*" { return textColor(yychar, yylength(), new Color(124, 252, 0));}
+"+" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"-" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"/" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"*" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
 
 /* Operdador de asignacion */
-"-." { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+"-." { return textColor(yychar, yylength(), new Color(255, 265, 0));}
 
 /* Operador Aritmetico */
-"<" | ">" | "<=" | ">=" | "==" | "!=" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+"<" | ">" | "<=" | ">=" | "==" | "!=" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
 
 /* OPERADOR LOGICO */
-"&" | "|" | "!" { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+"&" | "|" | "!" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
 
-/* ciclos */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* ciclos WHILE */
 repetir |
-repetirMientras {  return textColor(yychar, yylength(), new Color(102, 205, 170));}
+repetirMientras { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* detener */ 
-interrumpir { /* Ignorar */ }
+interrumpir { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
-/* Estructura Si */
+/* Estructura Si (IF) */
 si |
-sino { /* Ignorar */ }
+sino { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 
 /* Final */
 final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 
+/*ARREGLOS*/
+arreglo { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+
+/*NULOS*/
+nulo { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+
+/* LEER ESCRIBIR*/
+leer { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+escribir { return textColor(yychar, yylength(), new Color(102, 205, 170));}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/
 
 //FUNCION PARA MUTAR
@@ -118,7 +139,7 @@ fase2 |
 fase3 |
 fase4 |
 fase5 |
-fase6 { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
+fase6 { return textColor(yychar, yylength(), new Color(0, 144, 255));}
 
 //TEMPERATURA
 "T"{Temperatura} { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
@@ -135,8 +156,12 @@ generar_graf { return textColor(yychar, yylength(), new Color(0, 144, 255));}
 //FUNCION PARA ACTIVAR
 activar {return textColor(yychar, yylength(), new Color(225, 181, 29));}
 
+///////////////////////////////////////////////////////////////////////////////////
+
 //NUMERO ERRONEO
 0{Numero} { /* Ignorar */ }
+
+
 //IDENTIFICADOR ERRONEO
 {Identificador} { /* Ignorar */ }
 
