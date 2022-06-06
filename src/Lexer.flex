@@ -57,7 +57,7 @@ import compilerTools.Token;
 Numero_deci { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
 
 /*cad*/
-"K_"{cad}= { return token(yytext(), "CADENA", yyline, yycolumn);}
+"K_"{cad} { return token(yytext(), "CADENA", yyline, yycolumn);}
     
 /*TIPO DATO*/
 LOGICO |
