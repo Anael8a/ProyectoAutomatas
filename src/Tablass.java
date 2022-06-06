@@ -287,7 +287,6 @@ public class Tablass extends JDialog {
                 {"Sino"},
                 {"Para"},
                 {"Mientras"},
-                {"Evaluar"},
                 {"Arreglo"},
                 {"Generar_Graf"},
                 {"Fase1"},
@@ -297,13 +296,11 @@ public class Tablass extends JDialog {
                 {"Fase5"},
                 {"Fase6"},
                 {"Leer"},
-                {"Fijar_Origen"},
                 {"Nulo"},
                 {"Evaluar"},
                 {"Fijar_Origen"},
                 {"Mutar"},
                 {"Expandir"},
-                {"activo"},
                 {null}
             },
             new String [] {
