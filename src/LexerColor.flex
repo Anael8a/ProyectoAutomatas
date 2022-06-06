@@ -88,19 +88,19 @@ FALSO { return textColor(yychar, yylength(), new Color(0, 0, 255));}
 ":" { return textColor(yychar, yylength(), new Color(0, 0, 0));}
 
 /*OPERADORES DE MATEMATICAS*/
-"+" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
-"-" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
-"/" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
-"*" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"+" { return textColor(yychar, yylength(), new Color(149, 37, 14));}
+"-" { return textColor(yychar, yylength(), new Color(2149, 37, 14));}
+"/" { return textColor(yychar, yylength(), new Color(149, 37, 14));}
+"*" { return textColor(yychar, yylength(), new Color(149, 37, 14));}
 
 /* Operdador de asignacion */
-"-." { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"-." { return textColor(yychar, yylength(), new Color(149, 37, 14));}
 
 /* Operador Aritmetico */
-"<" | ">" | "<=" | ">=" | "==" | "!=" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"<" | ">" | "<=" | ">=" | "==" | "!=" { return textColor(yychar, yylength(), new Color(149, 37, 14));}
 
 /* OPERADOR LOGICO */
-"&" | "|" | "!" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"&" | "|" | "!" { return textColor(yychar, yylength(), new Color(149, 37, 14));}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

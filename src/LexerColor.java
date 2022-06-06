@@ -103,11 +103,11 @@ class LexerColor {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\2\1\2\2\1\3\1\2\1\4\2\2\2\5"+
-    "\22\1\1\6\1\0\1\7\10\1\2\10\11\1\1\11"+
-    "\2\0\2\7\2\1\1\10\1\1\1\12\2\1\1\0"+
-    "\1\10\13\1\1\0\1\7\16\1\1\11\4\1\1\13"+
-    "\1\1\1\14\17\1\1\11\17\1\1\5\6\1";
+    "\1\0\2\1\2\2\1\3\1\2\1\4\1\5\1\2"+
+    "\2\6\22\1\1\7\1\0\1\10\10\1\2\11\11\1"+
+    "\1\12\2\0\2\10\2\1\1\11\1\1\1\13\2\1"+
+    "\1\0\1\11\13\1\1\0\1\10\16\1\1\12\4\1"+
+    "\1\14\1\1\1\15\17\1\1\12\17\1\1\6\6\1";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[139];
@@ -743,62 +743,67 @@ class LexerColor {
             { /* Ignorar */
             }
             // fall through
-          case 13: break;
+          case 14: break;
           case 2:
-            { return textColor(yychar, yylength(), new Color(255, 265, 0));
+            { return textColor(yychar, yylength(), new Color(149, 37, 14));
             }
             // fall through
-          case 14: break;
+          case 15: break;
           case 3:
             { return textColor(yychar, yylength(), new Color(19, 53, 114));
             }
             // fall through
-          case 15: break;
+          case 16: break;
           case 4:
             { return textColor(yychar, yylength(), new Color(0, 0, 0));
             }
             // fall through
-          case 16: break;
-          case 5:
-            { return textColor(yychar, yylength(), new Color(35, 120, 147));
-            }
-            // fall through
           case 17: break;
-          case 6:
-            { return textColor(yychar, yylength(), new Color(255, 200, 0));
+          case 5:
+            { return textColor(yychar, yylength(), new Color(2149, 37, 14));
             }
             // fall through
           case 18: break;
-          case 7:
-            { return textColor(yychar, yylength(), new Color(146, 146, 146));
+          case 6:
+            { return textColor(yychar, yylength(), new Color(35, 120, 147));
             }
             // fall through
           case 19: break;
-          case 8:
-            { return textColor(yychar, yylength(), new Color(0, 0, 255));
+          case 7:
+            { return textColor(yychar, yylength(), new Color(255, 200, 0));
             }
             // fall through
           case 20: break;
-          case 9:
-            { return textColor(yychar, yylength(), new Color(102, 205, 170));
+          case 8:
+            { return textColor(yychar, yylength(), new Color(146, 146, 146));
             }
             // fall through
           case 21: break;
-          case 10:
-            { return textColor(yychar, yylength(), new Color(255, 0, 255));
+          case 9:
+            { return textColor(yychar, yylength(), new Color(0, 0, 255));
             }
             // fall through
           case 22: break;
-          case 11:
-            { return textColor(yychar, yylength(), new Color(0, 144, 255));
+          case 10:
+            { return textColor(yychar, yylength(), new Color(102, 205, 170));
             }
             // fall through
           case 23: break;
-          case 12:
-            { return textColor(yychar, yylength(), new Color(255, 0, 0));
+          case 11:
+            { return textColor(yychar, yylength(), new Color(255, 0, 255));
             }
             // fall through
           case 24: break;
+          case 12:
+            { return textColor(yychar, yylength(), new Color(0, 144, 255));
+            }
+            // fall through
+          case 25: break;
+          case 13:
+            { return textColor(yychar, yylength(), new Color(255, 0, 0));
+            }
+            // fall through
+          case 26: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

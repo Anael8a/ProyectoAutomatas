@@ -121,7 +121,7 @@ si |
 sino { return token(yytext(), "ESTRUCTURA_SI", yyline, yycolumn);}
 
 /* Final */
-final { return token(yytext(), "FINAL", yyline, yycolumn);}
+final { return token(yytext(), "FINAL_W", yyline, yycolumn);}
 
 ////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/

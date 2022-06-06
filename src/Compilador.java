@@ -375,10 +375,16 @@ public class Compilador extends javax.swing.JFrame {
 
     private void SintacticAnalisis() {
         Grammar gramatica = new Grammar(tokens, errors);
-
+              
         /* ELIMINACION DE ERRORES*/
         gramatica.delete(new String[]{"ERROR", "ERROR_1", "ERROR_2"}, 1);
+        
+             /*GENERACION DE INICIO*/
+        //gramatica.group("INICIO", "SENTENCIAS FINAL");
+       // gramatica.group("INICIO", "SENTENCIAS", true, 43, "ERROR SINTACTICO {}: FALTA EL FINAL DEL PROGRAMA, FAVOR DE VERIFICAR CODIGO[#,%]");
 
+        
+        
         /*AGRUPACION DE VALORES*/
         gramatica.group("VALOR", "(N_ENTERO | N_DECIMAL)", true);
         gramatica.group("VALOR_CAD", "(CADENA)");
@@ -387,7 +393,7 @@ public class Compilador extends javax.swing.JFrame {
         /*DECLARACION DE VARIABLES*/
         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
         gramatica.group("VARIABLE2", "TIPO_CADENA IDENTIFICADOR Op_Asig VALOR_CAD", true);
-        //gramatica.group("VARIABLE3", "TIPO_LOGICO INDETIFICADOR LOGICO_V", true);
+        gramatica.group("VARIABLE3", "TIPO_LOGICO INDETIFICADOR LOGICO_V", true);
 
         gramatica.group("VARIABLE2", "TIPO_CADENA IDENTIFICADOR CADENA", true, 40, "ERROR SINTACTICO {}: FALTA EL OPERADOR DE ASIGNACION[#,%]");
         gramatica.group("VARIABLE3", "TIPO_LOGICO VALOR_LOG", true, 41, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR [#,%]");
@@ -448,7 +454,7 @@ public class Compilador extends javax.swing.JFrame {
 
         //errores
         //ERRORES EXPANDIR
-        gramatica.group("FUNCION_COMP_EXPANDIR", "PARENTESIS_A (VALOR)+ PARENTESIS_C", true, 36, "ERROR SINTACTICO FALTA LA PALABRA RESERVADA EXPANDIR");
+       // gramatica.group("FUNCION_COMP_EXPANDIR", "PARENTESIS_A (VALOR)+ PARENTESIS_C", true, 36, "ERROR SINTACTICO FALTA LA PALABRA RESERVADA EXPANDIR");
         gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+ PARENTESIS_C", true, 37, "ERROR SINTACTICO FALTA EL PARENTESIS QUE ABRE");
         gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A PARENTESIS_C", true, 38, "ERROR SINTACTICO FALTA EL VALOR");
         gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+", true, 39, "ERROR SINTACTICO FALTA EL PARENTESIS QUE CIERRA");
@@ -504,7 +510,9 @@ public class Compilador extends javax.swing.JFrame {
 
         gramatica.initialLineColumn();
          */
-
+/*RESERVADAS PARA INICIO Y FIN*/
+//INICIO ::= INICIO_ER | FIN_ER | Reservada_Inicio SENTENCIA Reservada_Fin | Reservada_Inicio Reservada_Fin ;
+gramatica.group("FIN", "FINAL_W");
  /*AGRUPACION DE ESTRUCTURAS DE CONTROL*/
         gramatica.group("ESTRUC_CONTROL", "(REPETIR | ESTRUCTURA_SI)");
         // gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A PARENTESIS_C");
@@ -522,13 +530,15 @@ public class Compilador extends javax.swing.JFrame {
 
         ////idenficador o variables
         gramatica.group("VARIABLE_PC", "VARIABLE PUNTOyCOMA", true);
+        gramatica.group("VARIABLE2_PC","VARIABLE2 PUNTOyCOMA",true);
+        gramatica.group("VARIABLE3_PC","VARIABLE3 PUNTOyCOMA",true);
         gramatica.group("VARIABLE_PC", "VARIABLE ", true, 13, "ERROR SINTACTICO{}: Falta el punto y coma al final de la variable[#,%]");
         gramatica.group("FUNCION_COMP_EVA_PC", "FUNCION_COMP_EV PUNTOyCOMA", true);
         gramatica.group("FUNCION_COMP_MUT_PC", "FUNCION_COMP_MUT PUNTOyCOMA", true);
         gramatica.group("FUNCION_COMP_FIJAR_PC", "FUNCION_COMP_FIJAR PUNTOyCOMA", true);
         gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_EXPANDIR PUNTOyCOMA", true);
         gramatica.group("FUNCION_COMP_GENERAR_GRAF_PC", "FUNCION_COMP_GENERAR_GRAF PUNTOyCOMA", true);
-
+//REPETIR
         gramatica.group("FUNCION_COMP_EVA_PC", "FUNCION_COMP_EV", 14, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
         gramatica.group("FUNCION_COMP_MUT_PC", "FUNCION_COMP_MUT", 15, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
         gramatica.group("FUNCION_COMP_FIJAR_PC", "FUNCION_COMP_FIJAR", 16, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
@@ -539,7 +549,7 @@ public class Compilador extends javax.swing.JFrame {
 
         //eliminacion del el punto y coma
         gramatica.delete("PUNTOyCOMA", 15, "ERROR SINTACTICO{}: El punto y coma no esta al final de una sentencia");
-        gramatica.group("SENTENCIAS", "(VARIABLE_PC | FUNCION_COMP_PC)+");
+        gramatica.group("SENTENCIAS", "(VARIABLE_PC | FUNCION_COMP_PC | FUNCION_MUT_PC)+");
 
         gramatica.loopForFunExecUntilChangeNotDetected(() -> {
             gramatica.group("ESTRUC_CONTROL_COMP_LASLC", "ESTRUC_CONTROL_COMP LLAVE_A (SENTENCIAS)? LLAVE_C", true);
@@ -555,10 +565,13 @@ public class Compilador extends javax.swing.JFrame {
             gramatica.finalLineColumn();
             gramatica.group("ESTRUC_CONTROL_COMP_LASLC", "ESTRUC_CONTROL_COMP LLAVE_A SENTENCIAS", true, 16, "ERRROR SINTACTICO{}: Falta la llave que cierra en la estructura de control");
 
-            gramatica.group("SENTENCIAS", "(SENTENCIAS | ESTRUC_CONTROL_COMP_LASLC)");
+            gramatica.group("SENTENCIAS", "(SENTENCIAS | ESTRUC_CONTROL_COMP_LASLC) FIN", true);
+            
+            //gramatica.group("SENTENCIAS", "(SENTENCIAS | ESTRUC_CONTROL_COMP_LASLC)", true, 44, "ERROR SINTACTICO {}: FALTA EL FIN DEL PROGRAMA, FAVOR DE VERIFICAR EL CODIGO [#,%]");
 
         });
-
+        gramatica.initialLineColumn();
+        //gramatica.group("SENTENCIAS", "(SENTENCIAS | ESTRUC_CONTROL_COMP_LASLC)", true, 44, "ERROR SINTACTICO {}: FALTA EL FIN DEL PROGRAMA, FAVOR DE VERIFICAR EL CODIGO [#,%]");
         gramatica.delete(new String[]{"LLAVE_A", "LLAVE_C"}, 17, "ERROR SINTACTICO{}: La llave [] no esta contenida en una agrupacion[#,%]");
 
         gramatica.show();

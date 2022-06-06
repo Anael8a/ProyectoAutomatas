@@ -1009,7 +1009,7 @@ class Lexer {
             // fall through
           case 80: break;
           case 35:
-            { return token(yytext(), "FINAL", yyline, yycolumn);
+            { return token(yytext(), "FINAL_W", yyline, yycolumn);
             }
             // fall through
           case 81: break;
