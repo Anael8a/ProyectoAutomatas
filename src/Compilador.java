@@ -372,12 +372,18 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("VALOR", "(N_ENTERO | N_DECIMAL)", true);
         gramatica.group("VALOR_CAD", "(CADENA)");
         gramatica.group("VALOR_LOG", "(LOGICO_V | LOGICO_F)");
+        
+        
         /*DECLARACION DE VARIABLES*/
-        gramatica.group("VARIABLE", "TIPO_ENT IDENTIFICADOR Op_Asig VALOR", true);
-        gramatica.group("VARIABLE2","TIPO_CADENA IDENTIFICADOR Op_Asig CADENA ",true);
-        gramatica.group("VARIABLE3","TIPO_LOG INDETIFICADOR Op_Asig VALOR_LOG ",true);
+        
+        gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
+        gramatica.group("VARIABLE2","TIPO_CADENA IDENTIFICADOR Op_Asig VALOR_CAD",true);
+        gramatica.group("VARIABLE3","TIPO_LOGICO INDETIFICADOR LOGICO_V",true);
         
         
+
+        gramatica.group("VARIABLE2", "TIPO_CADENA IDENTIFICADOR CADENA", true, 40, "ERROR SINTACTICO {}: FALTA EL OPERADOR DE ASIGNACION[#,%]");
+        gramatica.group("VARIABLE3", "TIPO_LOGICO VALOR_LOG", true, 41, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR [#,%]");
 
 
         gramatica.group("VARIABLE", "TIPO_DATO Op_Asig VALOR", true, 2, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE[#,%]");
@@ -394,7 +400,7 @@ public class Compilador extends javax.swing.JFrame {
         //AGREGAR MAS VARIABLES O LO QUE SE NECESITE PARA LAS GRAMATICAS.
         /* ELIMINACION DE TIPOS DE DATO Y OPERADORES DE ASIGNACION*/
         gramatica.delete("TIPO_DATO", 4, "ERROR SINTACTICO {}: EL TIPO DE DATO NO ESTA EN UNA DECLARACION [#, %]");
-        gramatica.delete("Op_Asig", 4, "ERROR SINTACTICO{}: EL OPERADOR DE ASIGNACION NO ESTA EN UNA DELCARACION [#, %]");
+        gramatica.delete("Op_Asig", 42, "ERROR SINTACTICO{}: EL OPERADOR DE ASIGNACION NO ESTA EN UNA DELCARACION [#, %]");
 
         /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
         //gramatica.group("VALOR", "IDENTIFICADOR", true);

@@ -57,10 +57,20 @@ Numero_deci { return token(yytext(), "N_DECIMAL", yyline, yycolumn);}
 "K_"{cad} { return token(yytext(), "CADENA", yyline, yycolumn);}
     
 /*TIPO DATO*/
-LOGICO |
 ENT |
-DECI |
-CADENA { return token(yytext(), "TIPO_DATO", yyline, yycolumn);} 
+DECI { return token(yytext(), "TIPO_DATO", yyline, yycolumn);} 
+
+/*TIPO DE DATO CADENA*/
+CADENA { return token(yytext(), "TIPO_CADENA", yyline, yycolumn);}
+
+/*TIPO DE DATO LOGICO*/
+LOGICO { return token(yytext(), "TIPO_LOGICO", yyline, yycolumn);}
+
+/*PALABRA DE VERDADERO Y F*/
+VERDADERO { return token(yytext(), "LOGICO_V", yyline, yycolumn);}
+FALSO { return token(yytext(), "LOGICO_F", yyline, yycolumn);}
+
+
 /////////////////////////////////////////////////////////////////////////////
 /* Operadores de agrupacion */
 "(" { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);}

@@ -59,10 +59,19 @@ Numero_deci { return textColor(yychar, yylength(), new Color(35, 120, 147));}
 "K_"{cad} {return textColor(yychar, yylength(), new Color(255, 0, 255));}
     
 /*TIPO DATO*/
-LOGICO |
 ENT |
-DECI |
-CADENA { return textColor(yychar, yylength(), new Color(0, 0, 255));} 
+DECI { return textColor(yychar, yylength(), new Color(0, 0, 255));} 
+
+/*TIPO DE DATO CADENA*/
+CADENA { return textColor(yychar, yylength(), new Color(0, 0, 255));}
+
+/*TIPO DE DATO LOGICO*/
+LOGICO { return textColor(yychar, yylength(), new Color(0, 0, 255));}
+
+/*PALABRA DE VERDADERO Y F*/
+VERDADERO { return textColor(yychar, yylength(), new Color(0, 0, 255));}
+FALSO { return textColor(yychar, yylength(), new Color(0, 0, 255));}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /* Operadores de agrupacion */
 "(" |
