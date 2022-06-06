@@ -123,8 +123,6 @@ sino { return token(yytext(), "ESTRUCTURA_SI", yyline, yycolumn);}
 /* Final */
 final { return token(yytext(), "FINAL", yyline, yycolumn);}
 
-/*ARREGLOS*/
-arreglo { return token(yytext(), "ARREGLO", yyline, yycolumn);}
 ////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/
 

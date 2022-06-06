@@ -118,8 +118,6 @@ sino { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 /* Final */
 final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 
-/*ARREGLOS*/
-arreglo { return textColor(yychar, yylength(), new Color(102, 205, 170));}
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/
 
