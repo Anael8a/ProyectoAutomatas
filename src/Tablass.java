@@ -291,7 +291,6 @@ public class Tablass extends JDialog {
                 {"sino"},
                 {"final"},
                 {"arreglo"},
-                {"nulo"},
                 {"mutar"},
                 {"evaluar"},
                 {"fase1"},
