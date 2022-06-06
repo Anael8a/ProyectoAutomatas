@@ -75,7 +75,7 @@ CADENA { return textColor(yychar, yylength(), new Color(0, 0, 255));}
 "{" |
 "}" |
 "[" |
-"]" { return textColor(yychar, yylength(), new Color(255, 265, 0));}
+"]" { return textColor(yychar, yylength(), new Color(19, 53, 114));}
 
 /* Signos de apuntuacion */
 "," |
