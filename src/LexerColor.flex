@@ -40,11 +40,6 @@ import java.awt.Color;
     
     /*cad*/
     cad= {Letra} {Letra}*
-    
-    /*Bool*/
-    //Bool= "VERDADERO" | "FALSO"
-    
-
 %%
 {Comentario} { return textColor(yychar, yylength(), new Color(146, 146, 146));}
 {EspacioEnBlanco} {/* Ignorar */ }

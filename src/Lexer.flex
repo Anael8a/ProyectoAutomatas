@@ -39,9 +39,6 @@ import compilerTools.Token;
 
     /*cad*/
     cad= {Letra}{Letra}*
-    
-    /*Bool*/
-    //Bool= "VERDADERO" | "FALSO"
 
 %%
 {Comentario}|{EspacioEnBlanco} { /* Ignorar */ }
