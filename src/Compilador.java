@@ -379,9 +379,9 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
         gramatica.group("VARIABLE2","TIPO_CADENA IDENTIFICADOR Op_Asig VALOR_CAD",true);
         gramatica.group("VARIABLE3","TIPO_LOGICO INDETIFICADOR LOGICO_V",true);
-        
-        
 
+        
+        
         gramatica.group("VARIABLE2", "TIPO_CADENA IDENTIFICADOR CADENA", true, 40, "ERROR SINTACTICO {}: FALTA EL OPERADOR DE ASIGNACION[#,%]");
         gramatica.group("VARIABLE3", "TIPO_LOGICO VALOR_LOG", true, 41, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR [#,%]");
 

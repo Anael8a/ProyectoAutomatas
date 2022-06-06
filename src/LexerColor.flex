@@ -37,7 +37,7 @@ import java.awt.Color;
 
     /* Temperatura */
     Temperatura =  {Numero} | {Numero_deci}
-    
+
     /*cad*/
     cad= {Letra} {Letra}*
 %%
