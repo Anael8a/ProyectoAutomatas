@@ -125,14 +125,6 @@ final { return token(yytext(), "FINAL", yyline, yycolumn);}
 
 /*ARREGLOS*/
 arreglo { return token(yytext(), "ARREGLO", yyline, yycolumn);}
-
-/*NULOS*/
-nulo { return token(yytext(), "NULO", yyline, yycolumn);}
-
-/* LEER ESCRIBIR*/
-leer { return token(yytext(), "ESTRUCTURA_ENTRADA", yyline, yycolumn);}
-escribir { return token(yytext(), "ESTRUCTURA_SALIDA", yyline, yycolumn);}
-
 ////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/
 
@@ -158,9 +150,6 @@ fijar_Origen { return token(yytext(), "FIJAR_ORIGEN", yyline, yycolumn);}
 
 //FUNCION PARA EXPANDIR
 expandir { return token(yytext(), "EXPANDIR", yyline, yycolumn);}
-
-//FUNCION PARA ACTIVAR
-activar {return token (yytext(), "ACTIVAR", yyline, yycolumn);}
 
 //FUNCION PARA GENERAR GRAFICA
 generar_graf { return token(yytext(), "GENERAR_GRAF", yyline, yycolumn);}

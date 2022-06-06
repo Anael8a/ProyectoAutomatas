@@ -97,7 +97,7 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnNuevo);
-        btnNuevo.setBounds(10, 20, 110, 41);
+        btnNuevo.setBounds(10, 20, 110, 40);
 
         btnAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         btnAbrir.setText("Abrir");
@@ -107,7 +107,7 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAbrir);
-        btnAbrir.setBounds(120, 20, 100, 41);
+        btnAbrir.setBounds(120, 20, 100, 40);
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disquete.png"))); // NOI18N
         btnGuardar.setText("Guardar");
@@ -117,7 +117,7 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardar);
-        btnGuardar.setBounds(220, 20, 115, 41);
+        btnGuardar.setBounds(220, 20, 90, 40);
 
         btnCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compilador.png"))); // NOI18N
         btnCompilar.setText("Compilar");
@@ -127,7 +127,7 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCompilar);
-        btnCompilar.setBounds(470, 20, 120, 41);
+        btnCompilar.setBounds(470, 20, 120, 40);
 
         btnEjecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/corriendo.png"))); // NOI18N
         btnEjecutar.setText("Ejecutar");
@@ -147,12 +147,12 @@ public class Compilador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardarC);
-        btnGuardarC.setBounds(340, 20, 130, 41);
+        btnGuardarC.setBounds(340, 20, 130, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(6, 5, 740, 70);
         getContentPane().add(txaErrores);
-        txaErrores.setBounds(10, 370, 720, 110);
+        txaErrores.setBounds(10, 370, 720, 130);
 
         tblLexemas.setBackground(new java.awt.Color(204, 204, 204));
         tblLexemas.setModel(new javax.swing.table.DefaultTableModel(
@@ -169,7 +169,7 @@ public class Compilador extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tblLexemas);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(740, 100, 310, 380);
+        jScrollPane3.setBounds(740, 100, 310, 400);
 
         jScrollPane2.setViewportView(jtpEscritorio);
 
@@ -372,19 +372,14 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("VALOR", "(N_ENTERO | N_DECIMAL)", true);
         gramatica.group("VALOR_CAD", "(CADENA)");
         gramatica.group("VALOR_LOG", "(LOGICO_V | LOGICO_F)");
-        
-        
-        /*DECLARACION DE VARIABLES*/
-        
-        gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
-        gramatica.group("VARIABLE2","TIPO_CADENA IDENTIFICADOR Op_Asig VALOR_CAD",true);
-        gramatica.group("VARIABLE3","TIPO_LOGICO INDETIFICADOR LOGICO_V",true);
 
-        
-        
+        /*DECLARACION DE VARIABLES*/
+        gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR Op_Asig VALOR", true);
+        gramatica.group("VARIABLE2", "TIPO_CADENA IDENTIFICADOR Op_Asig VALOR_CAD", true);
+        //gramatica.group("VARIABLE3", "TIPO_LOGICO INDETIFICADOR LOGICO_V", true);
+
         gramatica.group("VARIABLE2", "TIPO_CADENA IDENTIFICADOR CADENA", true, 40, "ERROR SINTACTICO {}: FALTA EL OPERADOR DE ASIGNACION[#,%]");
         gramatica.group("VARIABLE3", "TIPO_LOGICO VALOR_LOG", true, 41, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR [#,%]");
-
 
         gramatica.group("VARIABLE", "TIPO_DATO Op_Asig VALOR", true, 2, "ERROR SINTACTICO {}: FALTA EL IDENTIFICADOR EN LA VARIABLE[#,%]");
         gramatica.group("VARIABLE_TEMP", "TIPO_DATO IDENTIFICADOR Op_Asig TEMPERATURA");
@@ -405,86 +400,78 @@ public class Compilador extends javax.swing.JFrame {
         /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
         //gramatica.group("VALOR", "IDENTIFICADOR", true);
         //gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
-        
         /**/
 //mutar NUMERO(NUM.DE FASE,CANTIDAD DE PAISES,TEMPERATURA)
 
- /*agrupacion de funciones*/
-        
+        /*agrupacion de funciones*/
         //FUNCION MUTAR
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C",true);
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C", true);
         //FUNCON evaluar
-        gramatica.group("FUNCION_COMP_EV","FUNCION_MUTAR PARENTESIS_A (FASES)+ PARENTESIS_C",true); 
-        
+        gramatica.group("FUNCION_COMP_EV", "FUNCION_MUTAR PARENTESIS_A (FASES)+ PARENTESIS_C", true);
+
         //FUNCION fijar_origen
-        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN PARENTESIS_A (VALOR COMA VALOR)+ PARENTESIS_C",true);
+        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN PARENTESIS_A (VALOR COMA VALOR)+ PARENTESIS_C", true);
         //FUNCION EXPANDIR
-        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+ PARENTESIS_C",true);
-        
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A (VALOR COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C",true);
+        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+ PARENTESIS_C", true);
 
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "GENERAR_GRAF PARENTESIS_A (VALOR COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C", true);
 
-       //ERRORES FUNCION EVALUAR
-        gramatica.group("FUNCION_COMP_MUT"," PARENTESIS_A (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C",true,18,"ERROR SINTATICO ,FALTA LA PALABRA RESERVADA EVALUAR");
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C",true,19,"ERROR SINTATICO ,FALTA PARENTESIS QUE ABRE");
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C",true,20,"ERROR SINTATICO ,FALTA LA FASE");
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES VALOR COMA TEMPERATURA)+ PARENTESIS_C",true,21,"ERROR SINTATICO ,FALTA LA COMA DESPUES DE FASE");
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES COMA COMA TEMPERATURA)+ PARENTESIS_C",true,22,"ERROR SINTATICO ,FALTA EL VALOR DE CANTIDAD DE PAISES");
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES COMA VALOR TEMPERATURA)+ PARENTESIS_C",true,23,"ERROR SINTATICO ,FALTA LA COMA ANTES DE TEMPERATURA");
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES COMA VALOR COMA )+ PARENTESIS_C",true,24,"ERROR SINTATICO ,FALTA EL VALOR DE LA TEMPERATURA");
+        //ERRORES FUNCION EVALUAR
+        gramatica.group("FUNCION_COMP_MUT", " PARENTESIS_A (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C", true, 18, "ERROR SINTATICO ,FALTA LA PALABRA RESERVADA EVALUAR");
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR (FASES COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C", true, 19, "ERROR SINTATICO ,FALTA PARENTESIS QUE ABRE");
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (COMA VALOR COMA TEMPERATURA)+ PARENTESIS_C", true, 20, "ERROR SINTATICO ,FALTA LA FASE");
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (FASES VALOR COMA TEMPERATURA)+ PARENTESIS_C", true, 21, "ERROR SINTATICO ,FALTA LA COMA DESPUES DE FASE");
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (FASES COMA COMA TEMPERATURA)+ PARENTESIS_C", true, 22, "ERROR SINTATICO ,FALTA EL VALOR DE CANTIDAD DE PAISES");
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (FASES COMA VALOR TEMPERATURA)+ PARENTESIS_C", true, 23, "ERROR SINTATICO ,FALTA LA COMA ANTES DE TEMPERATURA");
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (FASES COMA VALOR COMA )+ PARENTESIS_C", true, 24, "ERROR SINTATICO ,FALTA EL VALOR DE LA TEMPERATURA");
         //ERRORES FUNCION MUTAR
-        gramatica.group("FUNCION_COMP_EV","PARENTESIS_A (FASES)+ PARENTESIS_C",true,25,"ERROR SINTACTICO, FALTA LA PALABRA RESERVADA MUTAR"); 
-        gramatica.group("FUNCION_COMP_EV","FUNCION_MUTAR (FASES)+ PARENTESIS_C",true,26,"ERROR SINTACTICO, FALTA EL PARENTESIS DE APERTURA");
-        gramatica.group("FUNCION_COMP_EV","FUNCION_MUTAR PARENTESIS_A PARENTESIS_C",true,27,"ERROR SINTACTICO, FALTA LA FASE");
+        gramatica.group("FUNCION_COMP_EV", "PARENTESIS_A (FASES)+ PARENTESIS_C", true, 25, "ERROR SINTACTICO, FALTA LA PALABRA RESERVADA MUTAR");
+        gramatica.group("FUNCION_COMP_EV", "FUNCION_MUTAR (FASES)+ PARENTESIS_C", true, 26, "ERROR SINTACTICO, FALTA EL PARENTESIS DE APERTURA");
+        gramatica.group("FUNCION_COMP_EV", "FUNCION_MUTAR PARENTESIS_A PARENTESIS_C", true, 27, "ERROR SINTACTICO, FALTA LA FASE");
         //ERROES FUNCION_FIJAR
-        gramatica.group("FUNCION_COMP_FIJAR","PARENTESIS_A (VALOR COMA VALOR)+ PARENTESIS_C",true,28,"ERROR SINTACTICO, FALTA LA PALABRA RESERVADA fijar_origen");
-        gramatica.group("FUNCION_COMP_FIJAR","FIJAR_ORIGEN (VALOR COMA VALOR)+ PARENTESIS_C",true,29,"ERROR SINTACTICO, FALTA EL PARENTESIS QUE ABRE"); 
-        gramatica.group("FUNCION_COMP_FIJAR","FIJAR_ORIGEN PARENTESIS_A (COMA VALOR)+ PARENTESIS_C",true,30,"ERROR SINTACTICO, FALTA LA LATITUD");
-        gramatica.group("FUNCION_COMP_FIJAR","FIJAR_ORIGEN PARENTESIS_A (VALOR VALOR)+ PARENTESIS_C",true,31,"ERROR SINTACTICO, FALTA COMA DESPUES LATITUD");
-        gramatica.group("FUNCION_COMP_FIJAR","FIJAR_ORIGEN PARENTESIS_A (VALOR COMA)+ PARENTESIS_C",true,32,"ERROR SINTACTICO, FALTA LA ALTITUD");
-        
-         //errores
+        gramatica.group("FUNCION_COMP_FIJAR", "PARENTESIS_A (VALOR COMA VALOR)+ PARENTESIS_C", true, 28, "ERROR SINTACTICO, FALTA LA PALABRA RESERVADA fijar_origen");
+        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN (VALOR COMA VALOR)+ PARENTESIS_C", true, 29, "ERROR SINTACTICO, FALTA EL PARENTESIS QUE ABRE");
+        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN PARENTESIS_A (COMA VALOR)+ PARENTESIS_C", true, 30, "ERROR SINTACTICO, FALTA LA LATITUD");
+        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN PARENTESIS_A (VALOR VALOR)+ PARENTESIS_C", true, 31, "ERROR SINTACTICO, FALTA COMA DESPUES LATITUD");
+        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN PARENTESIS_A (VALOR COMA)+ PARENTESIS_C", true, 32, "ERROR SINTACTICO, FALTA LA ALTITUD");
+
+        //errores
         //ERRORES EXPANDIR
-        gramatica.group("FUNCION_COMP_EXPANDIR", "PARENTESIS_A (VALOR)+ PARENTESIS_C",true,36,"ERROR SINTACTICO FALTA LA PALABRA RESERVADA EXPANDIR");
-        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+ PARENTESIS_C",true,37,"ERROR SINTACTICO FALTA EL PARENTESIS QUE ABRE");
-        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A PARENTESIS_C",true,38,"ERROR SINTACTICO FALTA EL VALOR");
-        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+",true,39,"ERROR SINTACTICO FALTA EL PARENTESIS QUE CIERRA");
-        
+        gramatica.group("FUNCION_COMP_EXPANDIR", "PARENTESIS_A (VALOR)+ PARENTESIS_C", true, 36, "ERROR SINTACTICO FALTA LA PALABRA RESERVADA EXPANDIR");
+        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+ PARENTESIS_C", true, 37, "ERROR SINTACTICO FALTA EL PARENTESIS QUE ABRE");
+        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A PARENTESIS_C", true, 38, "ERROR SINTACTICO FALTA EL VALOR");
+        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+", true, 39, "ERROR SINTACTICO FALTA EL PARENTESIS QUE CIERRA");
 
         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
         gramatica.finalLineColumn();
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
-         //error final de funcion evaluar
-        gramatica.group("FUNCION_COMP_MUT","EVALUAR PARENTESIS_A (FASES COMA VALOR COMA )+ ",true,33,"ERROR SINTATICO ,FALTA EL PARENTESIS QUE CIERRA");
-        gramatica.group("FUNCION_COMP_EV","FUNCION_MUTAR PARENTESIS_A (FASES)+",true,34,"ERROR SINTACTICO, FALTA EL PARENTESIS QUE CIERRA");
-        gramatica.group("FUNCION_COMP_FIJAR","FIJAR_ORIGEN PARENTESIS_A (VALOR COMA VALOR)+ ",true,35,"ERROR SINTACTICO, FALTA EL PARENTESIS QUE CIERRA LA FUNCION"); 
-        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+",true,39,"ERROR SINTACTICO FALTA EL PARENTESIS QUE CIERRA");
+        //error final de funcion evaluar
+        gramatica.group("FUNCION_COMP_MUT", "EVALUAR PARENTESIS_A (FASES COMA VALOR COMA )+ ", true, 33, "ERROR SINTATICO ,FALTA EL PARENTESIS QUE CIERRA");
+        gramatica.group("FUNCION_COMP_EV", "FUNCION_MUTAR PARENTESIS_A (FASES)+", true, 34, "ERROR SINTACTICO, FALTA EL PARENTESIS QUE CIERRA");
+        gramatica.group("FUNCION_COMP_FIJAR", "FIJAR_ORIGEN PARENTESIS_A (VALOR COMA VALOR)+ ", true, 35, "ERROR SINTACTICO, FALTA EL PARENTESIS QUE CIERRA LA FUNCION");
+        gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+", true, 39, "ERROR SINTACTICO FALTA EL PARENTESIS QUE CIERRA");
         //FUNCIONES EVALUAR
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","PARENTESIS_A (VALOR COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C",true,40,"ERROR SINTACTICO,FALTA LA PALABRA RESERVADA generar_graf");
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF (VALOR COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C",true,41,"ERROR SINTACTICO,FALTA EL PARENTESIS QUE ABRE");
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A ( COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C",true,40,"ERROR SINTACTICO,FALTA LA CANTIDAD DE PAISES");
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A (VALOR COMA COMA VALOR COMA VALOR)+ PARENTESIS_C",true,41,"ERROR SINTACTICO,FALTA EL NUMERO DE INFECTADOS ");
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A (VALOR COMA VALOR COMA COMA VALOR)+ PARENTESIS_C",true,42,"ERROR SINTACTICO,FALTA LA FECHA DE INICIO ");
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A (VALOR COMA COMA VALOR COMA VALOR)+ PARENTESIS_C",true,43,"ERROR SINTACTICO,FALTA LA FECHA DE FIN ");
-
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "PARENTESIS_A (VALOR COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C", true, 40, "ERROR SINTACTICO,FALTA LA PALABRA RESERVADA generar_graf");
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "GENERAR_GRAF (VALOR COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C", true, 41, "ERROR SINTACTICO,FALTA EL PARENTESIS QUE ABRE");
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "GENERAR_GRAF PARENTESIS_A ( COMA VALOR COMA VALOR COMA VALOR)+ PARENTESIS_C", true, 40, "ERROR SINTACTICO,FALTA LA CANTIDAD DE PAISES");
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "GENERAR_GRAF PARENTESIS_A (VALOR COMA COMA VALOR COMA VALOR)+ PARENTESIS_C", true, 41, "ERROR SINTACTICO,FALTA EL NUMERO DE INFECTADOS ");
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "GENERAR_GRAF PARENTESIS_A (VALOR COMA VALOR COMA COMA VALOR)+ PARENTESIS_C", true, 42, "ERROR SINTACTICO,FALTA LA FECHA DE INICIO ");
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF", "GENERAR_GRAF PARENTESIS_A (VALOR COMA COMA VALOR COMA VALOR)+ PARENTESIS_C", true, 43, "ERROR SINTACTICO,FALTA LA FECHA DE FIN ");
 
 //NUMERO(CANTIDAD DE PAISES,NUMERO DE INFECTADOS,FECHA INICIO,FECHA ACTUAL)
-
-
-         
         gramatica.initialLineColumn();
 
-         /*FUNCIONES DE EVALUAR*/
-       // gramatica.group("FUNCION_ACTIVAR", "(ACTIVAR)", true);
-     //   gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A(VERDADERO| FALSE) PARENTESIS_C", true);
-       // gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A ");
+        /*FUNCIONES DE EVALUAR*/
+        // gramatica.group("FUNCION_ACTIVAR", "(ACTIVAR)", true);
+        //   gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A(VERDADERO| FALSE) PARENTESIS_C", true);
+        // gramatica.group("FUNCION_ACTIVAR", "FUNCION_ACTIVAR PARENTESIS_A ");
 
         /*ELIMINACION DE FUNCIONES INCOMPLETAS*/
         gramatica.delete("FUNCION", 8, "ERROR SINTACTICO{}: LA FUNCION NO ESTA DECLARADA CORRECTAMENTE[#, %]");
 
         gramatica.loopForFunExecUntilChangeNotDetected(() -> {
             gramatica.group("EXP_LOGICA", "(FUNCION_COMP | EXP_LOGICA) (OP_LOGICO (FUNCION_COMP | EXP_LOGICA))+");
-            
+
             gramatica.group("EXP_LOGICA", "PARENTESIS_A (EXP_LOGICA | FUNCION_COMP) PARENTESIS_C");
 
         });
@@ -497,11 +484,7 @@ public class Compilador extends javax.swing.JFrame {
 
         /*AGRUPACION DE EXP. LOGICAS COMO VALOR Y PARAMETROS*/
         gramatica.group("VALOR", "EXP_LOGICA");
-        gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
-
-       
-        
-/*
+        gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");       /*
          gramatica.group("FUNCION", "(EVALUAR | FUNCION_MUTAR | FUNCION_FIJAR_ORIGEN | EXPANDIR | GENERAR_GRAF)", true);
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true, 6, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE ABRE EN LA FUNCION[#, %]");
@@ -509,12 +492,12 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true, 7, "ERROR SINTACTICO{}:FALTA EL PARENTESIS QUE CIERRA EN LA FUNCION[#, %]");
 
         gramatica.initialLineColumn();
-*/
+         */
 
-        /*AGRUPACION DE ESTRUCTURAS DE CONTROL*/
+ /*AGRUPACION DE ESTRUCTURAS DE CONTROL*/
         gramatica.group("ESTRUC_CONTROL", "(REPETIR | ESTRUCTURA_SI)");
-       // gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A PARENTESIS_C");
-       // gramatica.group("ESTRUC_CONTROL", "(VALOR | PARAMETROS)");
+        // gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A PARENTESIS_C");
+        // gramatica.group("ESTRUC_CONTROL", "(VALOR | PARAMETROS)");
         gramatica.group("ESTRUC_CONTROL_COMP", "ESTRUC_CONTROL PARENTESIS_A (VALOR | PARAMETROS) PARENTESIS_C");
 
         /*ELIMINACION DE ESTRUCTURAS DE CONTROL INCOMPLETAS*/
@@ -529,18 +512,17 @@ public class Compilador extends javax.swing.JFrame {
         ////idenficador o variables
         gramatica.group("VARIABLE_PC", "VARIABLE PUNTOyCOMA", true);
         gramatica.group("VARIABLE_PC", "VARIABLE ", true, 13, "ERROR SINTACTICO{}: Falta el punto y coma al final de la variable[#,%]");
-        gramatica.group("FUNCION_COMP_EVA_PC", "FUNCION_COMP_EV PUNTOyCOMA",true);
-        gramatica.group("FUNCION_COMP_MUT_PC", "FUNCION_COMP_MUT PUNTOyCOMA",true);
-        gramatica.group("FUNCION_COMP_FIJAR_PC", "FUNCION_COMP_FIJAR PUNTOyCOMA",true);
-        gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_EXPANDIR PUNTOyCOMA",true);
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF_PC", "FUNCION_COMP_GENERAR_GRAF PUNTOyCOMA",true);
-        
-        
+        gramatica.group("FUNCION_COMP_EVA_PC", "FUNCION_COMP_EV PUNTOyCOMA", true);
+        gramatica.group("FUNCION_COMP_MUT_PC", "FUNCION_COMP_MUT PUNTOyCOMA", true);
+        gramatica.group("FUNCION_COMP_FIJAR_PC", "FUNCION_COMP_FIJAR PUNTOyCOMA", true);
+        gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_EXPANDIR PUNTOyCOMA", true);
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF_PC", "FUNCION_COMP_GENERAR_GRAF PUNTOyCOMA", true);
+
         gramatica.group("FUNCION_COMP_EVA_PC", "FUNCION_COMP_EV", 14, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
-      gramatica.group("FUNCION_COMP_MUT_PC", "FUNCION_COMP_MUT", 15, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
-       gramatica.group("FUNCION_COMP_FIJAR_PC", "FUNCION_COMP_FIJAR", 16, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
-       gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_EXPANDIR", 17, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
-       gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_GENERAR_GRAF", 18, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
+        gramatica.group("FUNCION_COMP_MUT_PC", "FUNCION_COMP_MUT", 15, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
+        gramatica.group("FUNCION_COMP_FIJAR_PC", "FUNCION_COMP_FIJAR", 16, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
+        gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_EXPANDIR", 17, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
+        gramatica.group("FUNCION_COMP_EXPANDIR_PC", "FUNCION_COMP_GENERAR_GRAF", 18, "ERROR SINTACTICO{}: Falta el punto y coma al final de la declaracion de funcion [#,%]");
 
         gramatica.initialLineColumn();
 
@@ -565,9 +547,8 @@ public class Compilador extends javax.swing.JFrame {
             gramatica.group("SENTENCIAS", "(SENTENCIAS | ESTRUC_CONTROL_COMP_LASLC)");
 
         });
-        
+
         gramatica.delete(new String[]{"LLAVE_A", "LLAVE_C"}, 17, "ERROR SINTACTICO{}: La llave [] no esta contenida en una agrupacion[#,%]");
-        
 
         gramatica.show();
 

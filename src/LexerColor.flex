@@ -120,14 +120,6 @@ final { return textColor(yychar, yylength(), new Color(255, 0, 0));}
 
 /*ARREGLOS*/
 arreglo { return textColor(yychar, yylength(), new Color(102, 205, 170));}
-
-/*NULOS*/
-nulo { return textColor(yychar, yylength(), new Color(102, 205, 170));}
-
-/* LEER ESCRIBIR*/
-leer { return textColor(yychar, yylength(), new Color(102, 205, 170));}
-escribir { return textColor(yychar, yylength(), new Color(102, 205, 170));}
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /*FUNCIONES PARA EL SISTEMA*/
 
@@ -156,10 +148,6 @@ expandir {return textColor(yychar, yylength(), new Color(0, 144, 255));}
 
 //FUNCION PARA GENERAR GRAFICA
 generar_graf { return textColor(yychar, yylength(), new Color(0, 144, 255));}
-
-//FUNCION PARA ACTIVAR
-activar {return textColor(yychar, yylength(), new Color(225, 181, 29));}
-
 ///////////////////////////////////////////////////////////////////////////////////
 
 //NUMERO ERRONEO

@@ -578,30 +578,30 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="24">
                         <Column editable="true" title="PALABRAS" type="java.lang.Object">
-                          <Data value="Fin"/>
-                          <Data value="Dec"/>
-                          <Data value="Cad"/>
-                          <Data value="Bool"/>
-                          <Data value="Falso"/>
-                          <Data value="Si"/>
-                          <Data value="Sino"/>
-                          <Data value="Para"/>
-                          <Data value="Mientras"/>
-                          <Data value="Arreglo"/>
-                          <Data value="Generar_Graf"/>
-                          <Data value="Fase1"/>
-                          <Data value="Fase2"/>
-                          <Data value="Fase3"/>
-                          <Data value="Fase4"/>
-                          <Data value="Fase5"/>
-                          <Data value="Fase6"/>
-                          <Data value="Leer"/>
-                          <Data value="Nulo"/>
-                          <Data value="Evaluar"/>
-                          <Data value="Fijar_Origen"/>
-                          <Data value="Mutar"/>
-                          <Data value="Expandir"/>
-                          <Data value="null"/>
+                          <Data value="ENT"/>
+                          <Data value="DECI"/>
+                          <Data value="CADENA"/>
+                          <Data value="LOGICO"/>
+                          <Data value="VERDADERO"/>
+                          <Data value="FALSO"/>
+                          <Data value="repetir"/>
+                          <Data value="repetirMientras"/>
+                          <Data value="interrumpir"/>
+                          <Data value="si"/>
+                          <Data value="sino"/>
+                          <Data value="final"/>
+                          <Data value="arreglo"/>
+                          <Data value="nulo"/>
+                          <Data value="mutar"/>
+                          <Data value="evaluar"/>
+                          <Data value="fase1"/>
+                          <Data value="fase2"/>
+                          <Data value="fase3"/>
+                          <Data value="fase4"/>
+                          <Data value="fase5"/>
+                          <Data value="fase6"/>
+                          <Data value="fijar_Origen"/>
+                          <Data value="expandir"/>
                         </Column>
                       </Table>
                     </Property>
