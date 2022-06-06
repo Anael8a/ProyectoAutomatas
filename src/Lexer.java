@@ -1078,7 +1078,7 @@ class Lexer {
             // fall through
           case 92: break;
           case 46:
-            { return token(yytext(), "FUNCION FIJAR_ORIGEN", yyline, yycolumn);
+            { return token(yytext(), "FIJAR_ORIGEN", yyline, yycolumn);
             }
             // fall through
           case 93: break;

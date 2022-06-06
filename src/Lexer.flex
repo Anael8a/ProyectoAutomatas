@@ -147,7 +147,7 @@ fase6 { return token(yytext(), "FASES", yyline, yycolumn);}
 "T"{Temperatura} { return token(yytext(), "TEMPERATURA", yyline, yycolumn);}
 
 //FUNCION PARA FIJAR ORIGEN
-fijar_Origen { return token(yytext(), "FUNCION FIJAR_ORIGEN", yyline, yycolumn);}
+fijar_Origen { return token(yytext(), "FIJAR_ORIGEN", yyline, yycolumn);}
 
 //FUNCION PARA EXPANDIR
 expandir { return token(yytext(), "EXPANDIR", yyline, yycolumn);}
