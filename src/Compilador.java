@@ -390,8 +390,8 @@ public class Compilador extends javax.swing.JFrame {
         gramatica.delete("Op_Asig", 4, "ERROR SINTACTICO{}: EL OPERADOR DE ASIGNACION NO ESTA EN UNA DELCARACION [#, %]");
 
         /* AGRUPACION DE IDENTIFICADORES Y DEFINICION DE PARAMETROS */
-        gramatica.group("VALOR", "IDENTIFICADOR", true);
-        gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
+        //gramatica.group("VALOR", "IDENTIFICADOR", true);
+        //gramatica.group("PARAMETROS", "VALOR (COMA VALOR)+");
         
         /**/
 //mutar NUMERO(NUM.DE FASE,CANTIDAD DE PAISES,TEMPERATURA)
@@ -408,7 +408,7 @@ public class Compilador extends javax.swing.JFrame {
         //FUNCION EXPANDIR
         gramatica.group("FUNCION_COMP_EXPANDIR", "EXPANDIR PARENTESIS_A (VALOR)+ PARENTESIS_C",true);
         
-        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A (VALOR COMA VALOR COMA FECHA COMA FECHA)+ PARENTESIS_C");
+        gramatica.group("FUNCION_COMP_GENERAR_GRAF","GENERAR_GRAF PARENTESIS_A (VALOR)+ PARENTESIS_C",true);
 
 
        //ERRORES FUNCION EVALUAR
